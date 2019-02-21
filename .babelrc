@@ -1,0 +1,63 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "@babel/plugin-proposal-class-properties"
+        ],
+        [
+          "babel-plugin-styled-components"
+        ],
+        [
+          "transform-object-rest-spread"
+        ],
+        [
+          "transform-react-display-name"
+        ],
+        [
+          "react-transform",
+          {
+            "transforms": [
+              {
+                "transform": "react-transform-hmr",
+                "imports": [
+                  "react"
+                ],
+                "locals": [
+                  "module"
+                ]
+              },
+              {
+                "transform": "react-transform-catch-errors",
+                "imports": [
+                  "react",
+                  "redbox-react"
+                ]
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    "production": {
+      "plugins": [
+        [
+          "@babel/plugin-proposal-class-properties"
+        ],
+        [
+          "babel-plugin-styled-components"
+        ],
+        [
+          "transform-object-rest-spead"
+        ],
+        [
+          "transform-react-display-name"
+        ]
+      ]
+    }
+  }
+}
