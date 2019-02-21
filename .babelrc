@@ -12,6 +12,29 @@
         [
           "babel-plugin-styled-components"
         ],
+        [
+          "react-transform",
+          {
+            "transforms": [
+              {
+                "transform": "react-transform-hmr",
+                "imports": [
+                  "react"
+                ],
+                "locals": [
+                  "module"
+                ]
+              },
+              {
+                "transform": "react-transform-catch-errors",
+                "imports": [
+                  "react",
+                  "redbox-react"
+                ]
+              }
+            ]
+          }
+        ]
       ]
     },
     "production": {
@@ -22,6 +45,12 @@
         [
           "babel-plugin-styled-components"
         ],
+        [
+          "transform-object-rest-spead"
+        ],
+        [
+          "transform-react-display-name"
+        ]
       ]
     }
   }
