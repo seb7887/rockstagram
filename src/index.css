@@ -16,7 +16,7 @@
 }
 
 html {
-  font-family: sans-serif;
+  font-family: "Segoe UI", sans-serif;
   font-size: 10px;
   color: var(--black);
 }
@@ -25,4 +25,9 @@ body {
   margin: 0;
   padding: 0;
   background: var(--lightgrey);
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 1.5;
 }
