@@ -10,8 +10,11 @@
     "webpack": "webpack",
     "webpack-dev-server": "webpack-dev-server",
     "dev": "npm run webpack-dev-server -- --env.mode development --hot",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier \"**/*.+(js|json|less|css|ts|tsx|md)\" --write"
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test": "is-ci \"test:coverage\" \"test:watch\"",
+    "format": "prettier \"**/*.+(js|json|less|css|ts|tsx|md)\" --write",
+    "precommit": "npm run format"
   },
   "repository": {
     "type": "git",
