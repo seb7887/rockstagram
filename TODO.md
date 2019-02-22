@@ -6,3 +6,4 @@
 - [ ] Docker
 - [ ] PWA
 - [ ] Theming
+- [ ] Responsive

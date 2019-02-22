@@ -11,5 +11,6 @@ const defaultState = {
   comments
 };
 
-export const store = createStore(rootReducer, defaultState);
+const store = createStore(rootReducer, defaultState);
 
+export default store;

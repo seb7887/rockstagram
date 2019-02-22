@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Main from './components/Main';
-import PhotoGrid from './components/PhotoGrid';
+import { Provider } from 'react-redux';
+
+import App from './containers/App';
+import store from './store';
 import './index.css';
 
-ReactDOM.render(
-  <Router>
-    <Main>
-      <PhotoGrid />
-    </Main>
-  </Router>,
-  document.getElementById('root')
-);
+const router = (
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>
+)
+
+ReactDOM.render(router, document.getElementById('root'));
