@@ -5,3 +5,4 @@
 - [ ] Cypress
 - [ ] Docker
 - [ ] PWA
+- [ ] Theming
