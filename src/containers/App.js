@@ -35,9 +35,10 @@ class App extends React.Component {
           <Route
             exact
             path='/view/:postId'
-            render={() =>
+            render={props =>
               <Single
                 {...this.props}
+                {...props}
               />
             }
           />
