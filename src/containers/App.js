@@ -20,28 +20,24 @@ const mapDispatchToProps = dispatch => {
 
 class App extends React.Component {
   render() {
-    const { posts, comments } = this.props;
     return (
       <>
         <Switch>
           <Route
             exact
             path='/'
-            render={props =>
+            render={() =>
               <Page
-                posts={posts}
-                comments={comments}
-                {...props}
+                {...this.props}
               />
             }
           />
           <Route
             exact
             path='/view/:postId'
-            render={props =>
+            render={() =>
               <Single
-                comments={comments}
-                {...props}
+                {...this.props}
               />
             }
           />

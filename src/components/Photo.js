@@ -122,7 +122,7 @@ const Figure = styled.figure`
   }
 `;
 
-const Photo = ({ post, i, comments }) => (
+const Photo = ({ post, i, comments, incrementLikes }) => (
   <Figure>
     <div className='grid-photo-wrap'>
       <Link to={`/view/${post.code}`}>
@@ -137,7 +137,7 @@ const Photo = ({ post, i, comments }) => (
     <figcaption>
       <p>{post.caption}</p>
       <div className='control-buttons'>
-        <button className='likes'><i className='fa fa-heart' /> {post.likes}</button>
+        <button className='likes' onClick={incrementLikes.bind(null, i)}><i className='fa fa-heart' /> {post.likes}</button>
         <Link to={`/view/${post.code}`} className='button'>
           <span className='comment-count'>
             <i className='fa fa-comment' /> {comments[post.code] ? comments[post.code].length : 0}
