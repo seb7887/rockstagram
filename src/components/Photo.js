@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { CSSTransition } from 'react-transition-group';
+
+import LikeAnimation from './LikeAnimation';
 
 const Figure = styled.figure`
   flex-basis: calc(33.33% - 4rem);
@@ -53,18 +54,6 @@ const Figure = styled.figure`
     }
   }
 
-  .likes-heart {
-    background: url(http://f.cl.ly/items/3Y373q2Q3J3Y1j203n0m/Bitmap-3.png) center no-repeat;
-    background-size: contain;
-    font-size: 2rem;
-    padding: 1rem;
-    position: absolute;
-    color: var(--black);
-    left: 50%;
-    top: 50%;
-    pointer-events: none;
-  }
-
   .likes {
     padding: 1rem 4rem;
     font-size: 2.5rem;
@@ -97,29 +86,6 @@ const Figure = styled.figure`
     border-radius: 50%;
     position: relative;
   }
-
-  .likes-heart {
-    opacity: 0;
-    transition: all 0.5s;
-    transform: translateX(-50%) translateY(-50%) scale(5);
-    display: block;
-    
-    &.like-enter {
-      transition: all 0.2s;
-      transform: translateX(-50%) translateY(-50%) scale(1);
-      opacity: 1;
-
-      &:active {
-        transform: translateX(-50%) translateY(-50%) scale(5);
-      }
-    }
-
-    &.like-leave {
-      &:active {
-        display: none;
-      }
-    }
-  }
 `;
 
 const Photo = ({ post, i, comments, incrementLikes }) => (
@@ -129,9 +95,7 @@ const Photo = ({ post, i, comments, incrementLikes }) => (
         <img src={post.display_src} alt={post.caption} className='grid-photo' />
       </Link>
 
-      <CSSTransition classNames='like' timeout={500}>
-        <span key={post.likes} className='likes-heart'>{post.likes}</span>
-      </CSSTransition>
+      <LikeAnimation likes={post.likes} />
     </div>
 
     <figcaption>
