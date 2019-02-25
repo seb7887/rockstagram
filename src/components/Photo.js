@@ -11,7 +11,7 @@ const Figure = styled.figure`
   padding: 2rem;
   border: 1px solid var(--lightgrey);
   background: white;
-  box-shadow: 0 0 0 2.5px rgba(0, 0, 0, 0.01);
+  box-shadow: 0 0 0 3.5px rgba(0, 0, 0, 0.01);
   position: relative;
 
   .grid-photo-wrap {
@@ -28,27 +28,27 @@ const Figure = styled.figure`
   .control-buttons {
     display: flex;
     justify-content: space-between;
+    width: 100%;
   }
 
   .button {
-    a {
-      border: 2px solid lighten(grey, 90%);
-    }
-    border: 2px solid lighten(grey, 90%);
+    border: 2px solid rgba(0, 0, 0, 0.2);
     background: none;
-    flex-basis: 48%;
+    width: 100%;
     display: inline-block;
     line-height: 2;
     text-decoration: none;
-    padding: 5px;
+    padding: 1rem 4rem;
     text-align: center;
-    font-size: 15px;
+    font-size: 2.5rem;
     color: var(--black);
     transition: all 0.2s;
     box-sizing: padding-box;
 
+
     &:hover, &:focus {
       border-color: var(--black);
+      opacity: 0.8;
       outline: 0;
     }
   }
@@ -68,13 +68,15 @@ const Figure = styled.figure`
   .likes {
     padding: 1rem 4rem;
     font-size: 2.5rem;
+    width: 100%;
     background: transparent;
-    border: 2px solid lighten(grey, 90%);
+    border: 2px solid rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: all 0.2s;
 
     &:hover, &:focus {
       border-color: var(--black);
+      opacity: 0.8;
       outline: 0;
     }
   }
@@ -135,7 +137,7 @@ const Photo = ({ post, i, comments }) => (
     <figcaption>
       <p>{post.caption}</p>
       <div className='control-buttons'>
-        <button className='likes'>&hearts; {post.likes}</button>
+        <button className='likes'><i className='fa fa-heart' /> {post.likes}</button>
         <Link to={`/view/${post.code}`} className='button'>
           <span className='comment-count'>
             <i className='fa fa-comment' /> {comments[post.code] ? comments[post.code].length : 0}
