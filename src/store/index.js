@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
 
 import rootReducer from './reducers';
 
@@ -11,6 +11,10 @@ const defaultState = {
   comments
 };
 
-const store = createStore(rootReducer, defaultState);
+const enhacers = compose(
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+);
+
+const store = createStore(rootReducer, defaultState, enhacers);
 
 export default store;
