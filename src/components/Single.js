@@ -1,15 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import { SinglePhoto } from './styles/SingleStyle';
 
 import Photo from './Photo';
 import Comments from './Comments';
-
-const SinglePhoto = styled.div`
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  background: white;
-`;
 
 const Single = (props) => {
   const i = props.posts.findIndex(post => post.code === props.match.params.postId);

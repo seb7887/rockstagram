@@ -9,3 +9,4 @@
 - [ ] Responsive
 - [ ] Error Boundary
 - [ ] Animations (React Spring?)
+- [ ] Redux Saga
