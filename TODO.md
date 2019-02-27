@@ -7,3 +7,5 @@
 - [ ] PWA
 - [ ] Theming
 - [ ] Responsive
+- [ ] Error Boundary
+- [ ] Animations (React Spring?)
