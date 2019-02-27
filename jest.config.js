@@ -1,5 +1,8 @@
 module.exports = {
   ...require('./test/jest.common'),
+  modulePaths: [
+    '<rootDir>'
+  ],
   collectCoverageFrom: [
     '**/src/**/*.js',
     '!**/styles/**',
