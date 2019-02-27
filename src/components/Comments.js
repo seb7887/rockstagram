@@ -8,7 +8,17 @@ class Comments extends React.Component {
         <p>
           <strong>{comment.user}</strong>
           {comment.text}
-          <button data-testid='remove-comment' className='remove-comment' onClick={this.props.removeComment.bind(null, this.props.match.params.postId, i)}>&times;</button>
+          <button
+            data-testid='remove-comment'
+            className='remove-comment'
+            onClick={this.props.removeComment.bind(
+              null,
+              this.props.match.params.postId,
+              i,
+            )}
+          >
+            &times;
+          </button>
         </p>
       </Comment>
     );
@@ -16,10 +26,14 @@ class Comments extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addComment(this.props.match.params.postId, this.refs.author.value, this.refs.comment.value);
+    this.props.addComment(
+      this.props.match.params.postId,
+      this.refs.author.value,
+      this.refs.comment.value,
+    );
     this.refs.commentForm.reset();
     this.refs.author.focus();
-  }
+  };
 
   render() {
     const comments = this.props.comments[this.props.match.params.postId] || [];
@@ -27,9 +41,24 @@ class Comments extends React.Component {
       <CommentGrid>
         {comments.map(this.renderComment.bind(this))}
 
-        <form onSubmit={this.handleSubmit} ref='commentForm' className='comment-form' data-testid='form'>
-          <input type='text' ref='author' placeholder='Author' data-testid='author' />
-          <input type='text' ref='comment' placeholder='Comment here...' data-testid='text' />
+        <form
+          onSubmit={this.handleSubmit}
+          ref='commentForm'
+          className='comment-form'
+          data-testid='form'
+        >
+          <input
+            type='text'
+            ref='author'
+            placeholder='Author'
+            data-testid='author'
+          />
+          <input
+            type='text'
+            ref='comment'
+            placeholder='Comment here...'
+            data-testid='text'
+          />
           <input type='submit' hidden />
         </form>
       </CommentGrid>

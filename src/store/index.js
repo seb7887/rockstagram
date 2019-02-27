@@ -8,11 +8,11 @@ import posts from '../data/posts';
 
 const defaultState = {
   posts,
-  comments
+  comments,
 };
 
 const enhacers = compose(
-  window.devToolsExtension ? window.devToolsExtension() : f => f
+  window.devToolsExtension ? window.devToolsExtension() : f => f,
 );
 
 const store = createStore(rootReducer, defaultState, enhacers);

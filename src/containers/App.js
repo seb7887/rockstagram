@@ -10,37 +10,24 @@ import Single from '../components/Single';
 const mapStateToProps = state => {
   return {
     posts: state.posts,
-    comments: state.comments
+    comments: state.comments,
   };
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(actionCreators, dispatch);
-}
+};
 
 class App extends React.Component {
   render() {
     return (
       <>
         <Switch>
-          <Route
-            exact
-            path='/'
-            render={() =>
-              <Page
-                {...this.props}
-              />
-            }
-          />
+          <Route exact path='/' render={() => <Page {...this.props} />} />
           <Route
             exact
             path='/view/:postId'
-            render={props =>
-              <Single
-                {...this.props}
-                {...props}
-              />
-            }
+            render={props => <Single {...this.props} {...props} />}
           />
         </Switch>
       </>
@@ -51,6 +38,6 @@ class App extends React.Component {
 export default withRouter(
   connect(
     mapStateToProps,
-    mapDispatchToProps
-  )(App)
+    mapDispatchToProps,
+  )(App),
 );

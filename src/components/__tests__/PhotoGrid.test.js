@@ -9,17 +9,17 @@ const comments = {
   test: [
     {
       text: 'hey!',
-      user: 'kingmob'
-    }
-  ]
-}
+      user: 'kingmob',
+    },
+  ],
+};
 
 const post = {
   caption: 'This is a test',
   code: 'test',
   display_src: 'test.jpg',
   id: '7',
-  likes: 7
+  likes: 7,
 };
 
 const posts = [post];
@@ -29,15 +29,15 @@ const incrementLikes = jest.fn();
 const mockedProps = {
   posts,
   incrementLikes,
-  comments
-}
+  comments,
+};
 
 describe('<PhotoGrid/>', () => {
   it('renders and matches snapshot', () => {
     const { asFragment } = render(
       <Router>
         <PhotoGrid {...mockedProps} />
-      </Router>
+      </Router>,
     );
 
     expect(asFragment()).toMatchSnapshot();

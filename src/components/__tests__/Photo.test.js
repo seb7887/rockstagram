@@ -9,17 +9,17 @@ const comments = {
   test: [
     {
       text: 'hey!',
-      user: 'kingmob'
-    }
-  ]
-}
+      user: 'kingmob',
+    },
+  ],
+};
 
 const post = {
   caption: 'This is a test',
   code: 'test',
   display_src: 'test.jpg',
   id: '7',
-  likes: 7
+  likes: 7,
 };
 
 const incrementLikes = jest.fn();
@@ -27,15 +27,15 @@ const incrementLikes = jest.fn();
 const mockedProps = {
   post,
   incrementLikes,
-  comments
-}
+  comments,
+};
 
 describe('<Photo/>', () => {
   it('renders and matches snapshot', () => {
     const { asFragment } = render(
       <Router>
         <Photo key={8} {...mockedProps} />
-      </Router>
+      </Router>,
     );
 
     expect(asFragment()).toMatchSnapshot();
@@ -45,7 +45,7 @@ describe('<Photo/>', () => {
     const { getByTestId } = render(
       <Router>
         <Photo key={8} {...mockedProps} />
-      </Router>
+      </Router>,
     );
 
     expect(getByTestId('caption').textContent).toContain('This is a test');
@@ -56,7 +56,7 @@ describe('<Photo/>', () => {
     const { getByTestId } = render(
       <Router>
         <Photo key={8} {...mockedProps} />
-      </Router>
+      </Router>,
     );
 
     fireEvent.click(getByTestId('likes'));

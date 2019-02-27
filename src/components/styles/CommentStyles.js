@@ -32,7 +32,8 @@ export const CommentGrid = styled.div`
   max-width: 40%;
 
   .comment-form {
-    input, textarea {
+    input,
+    textarea {
       width: 100%;
       border: 0;
       font-size: 1.3rem;

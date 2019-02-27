@@ -11,9 +11,7 @@ class Header extends React.Component {
     return (
       <Container>
         <h1>
-          <Link to='/'>
-            Rockstagram
-          </Link>
+          <Link to='/'>Rockstagram</Link>
         </h1>
       </Container>
     );

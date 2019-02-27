@@ -4,5 +4,5 @@ module.exports = {
   testEnvironment: 'jest-environment-jsdom',
   testPathIgnorePatterns: ['<rootDir>/server/'],
   testMatch: ['**/__tests__/**/*.js'],
-  setupFilesAfterEnv: [require.resolve('./setup-tests.js')]
+  setupFilesAfterEnv: [require.resolve('./setup-tests.js')],
 };

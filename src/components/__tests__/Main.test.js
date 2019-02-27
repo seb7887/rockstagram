@@ -5,8 +5,7 @@ import { render } from 'react-testing-library';
 
 import Main from '../Main';
 
-const Children = () => (<div>Children</div>);
-
+const Children = () => <div>Children</div>;
 
 describe('<Main/>', () => {
   it('renders and matches snapshot', () => {
@@ -15,7 +14,7 @@ describe('<Main/>', () => {
         <Main>
           <Children />
         </Main>
-      </Router>
+      </Router>,
     );
 
     expect(asFragment()).toMatchSnapshot();

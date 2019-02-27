@@ -26,7 +26,8 @@ const Animation = styled.div`
 `;
 
 const Likes = styled.span`
-  background: url(http://f.cl.ly/items/3Y373q2Q3J3Y1j203n0m/Bitmap-3.png) center no-repeat;
+  background: url(http://f.cl.ly/items/3Y373q2Q3J3Y1j203n0m/Bitmap-3.png) center
+    no-repeat;
   background-size: contain;
   font-size: 2rem;
   padding: 1rem;
@@ -51,6 +52,6 @@ const LikeAnimation = ({ likes }) => (
       </CSSTransition>
     </TransitionGroup>
   </Animation>
-)
+);
 
 export default LikeAnimation;

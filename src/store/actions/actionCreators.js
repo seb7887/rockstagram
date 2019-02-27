@@ -4,7 +4,7 @@ import { INCREMENT_LIKES, ADD_COMMENT, REMOVE_COMMENT } from '../actionTypes';
 export const incrementLikes = index => {
   return {
     type: INCREMENT_LIKES,
-    index
+    index,
   };
 };
 
@@ -14,7 +14,7 @@ export const addComment = (postId, author, comment) => {
     type: ADD_COMMENT,
     postId,
     author,
-    comment
+    comment,
   };
 };
 
@@ -23,6 +23,6 @@ export const removeComment = (postId, i) => {
   return {
     type: REMOVE_COMMENT,
     postId,
-    i
+    i,
   };
 };

@@ -17,15 +17,18 @@ const Photo = ({ post, i, comments, incrementLikes }) => (
     <figcaption data-testid='caption'>
       <p>{post.caption}</p>
       <div className='control-buttons'>
-        <button className='likes' onClick={incrementLikes.bind(null, i)}><i className='fa fa-heart' data-testid='likes' /> {post.likes}</button>
+        <button className='likes' onClick={incrementLikes.bind(null, i)}>
+          <i className='fa fa-heart' data-testid='likes' /> {post.likes}
+        </button>
         <Link to={`/view/${post.code}`} className='button'>
           <span className='comment-count' data-testid='count'>
-            <i className='fa fa-comment' /> {comments[post.code] ? comments[post.code].length : 0}
+            <i className='fa fa-comment' />{' '}
+            {comments[post.code] ? comments[post.code].length : 0}
           </span>
         </Link>
       </div>
     </figcaption>
   </Figure>
-)
+);
 
 export default Photo;

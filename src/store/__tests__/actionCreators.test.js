@@ -1,5 +1,9 @@
 /* eslint-env jest */
-import { incrementLikes, removeComment, addComment } from '../actions/actionCreators';
+import {
+  incrementLikes,
+  removeComment,
+  addComment,
+} from '../actions/actionCreators';
 import { INCREMENT_LIKES, REMOVE_COMMENT, ADD_COMMENT } from '../actionTypes';
 
 describe('Action Creators', () => {
@@ -7,7 +11,7 @@ describe('Action Creators', () => {
     it('should create an action to increment likes', () => {
       const expected = {
         type: INCREMENT_LIKES,
-        index: 7
+        index: 7,
       };
 
       const actual = incrementLikes(7);
@@ -25,7 +29,7 @@ describe('Action Creators', () => {
         type: ADD_COMMENT,
         postId,
         author,
-        comment
+        comment,
       };
 
       const actual = addComment(postId, author, comment);
@@ -38,7 +42,7 @@ describe('Action Creators', () => {
       const expected = {
         type: REMOVE_COMMENT,
         postId: 'test',
-        i: 3
+        i: 3,
       };
 
       const actual = removeComment('test', 3);

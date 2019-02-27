@@ -8,11 +8,11 @@ describe('Adding a comment', () => {
   const comment = 'This is a test';
   const expected = { user: author, text: comment };
 
-  const addComment = (postId) => {
+  const addComment = postId => {
     const action = { type: ADD_COMMENT, author, comment, postId };
     const allComments = commentsReducer(comments, action);
     return allComments[postId];
-  }
+  };
 
   it('should be able to add a new comment to an existing post', () => {
     const postComments = addComment('test');
@@ -47,6 +47,8 @@ describe('Removing a comment', () => {
   });
 
   it('should decrease the length of the array by 1', () => {
-    expect(updateCommentsState[postId].length).toEqual(commentState[postId].length - 1);
+    expect(updateCommentsState[postId].length).toEqual(
+      commentState[postId].length - 1,
+    );
   });
 });

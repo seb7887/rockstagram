@@ -5,7 +5,7 @@ import { posts } from './posts';
 
 const rootReducer = combineReducers({
   comments,
-  posts
+  posts,
 });
 
 export default rootReducer;

@@ -13,17 +13,17 @@ const comments = {
   test: [
     {
       text: 'This is a test',
-      user: 'kingmob'
-    }
-  ]
-}
+      user: 'kingmob',
+    },
+  ],
+};
 
 const post = {
   caption: 'This is a test',
   code: 'test',
   display_src: 'test.jpg',
   id: '7',
-  likes: 7
+  likes: 7,
 };
 
 const posts = [post];
@@ -31,14 +31,14 @@ const posts = [post];
 const mockedProps = {
   match: {
     params: {
-      postId: 'test'
-    }
+      postId: 'test',
+    },
   },
   comments,
   posts,
   incrementLikes,
   removeComment,
-  addComment
+  addComment,
 };
 
 describe('<Single/>', () => {
@@ -46,7 +46,7 @@ describe('<Single/>', () => {
     const { asFragment } = render(
       <Router>
         <Single {...mockedProps} />
-      </Router>
+      </Router>,
     );
 
     expect(asFragment()).toMatchSnapshot();

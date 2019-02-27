@@ -13,6 +13,6 @@ const router = (
       <App />
     </Router>
   </Provider>
-)
+);
 
 ReactDOM.render(router, document.getElementById('root'));
