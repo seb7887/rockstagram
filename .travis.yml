@@ -10,13 +10,21 @@ notifications:
 install: echo "Installing"
 jobs:
   include:
-    - stage: setup
-      script: npm install
     - stage: test
       script: npm install && npm run test
       on:
         branch: develop
     - stage: deploy
-      script: npm run deploy
+      script: npm install && npm build
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN
+        keep-history: true
       on:
         branch: master
+stages:
+  - name: test
+    if: (branch = develop)
+  - name: deploy
+    if: (branch = master)
