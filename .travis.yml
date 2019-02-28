@@ -3,18 +3,23 @@ node_js:
   - "lts/*"
 cache:
   directories:
-    - ".npm"
+    - ~/.npm
+    - ~/.cache
 notifications:
   email: false
 install: echo "Installing"
-script: npm install
 jobs:
   include:
     - stage: test
-      script: npm run test
+      script: npm install && npm run test
       on:
         branch: develop
     - stage: deploy
-      script: npm run deploy
+      script: npm install && npm run deploy
       on:
         branch: master
+stages:
+  - name: test
+    if: (branch = develop)
+  - name: deploy
+    if: (branch = master)
