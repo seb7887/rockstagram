@@ -6,8 +6,15 @@ cache:
     - "node_modules"
 notifications:
   email: false
-install: echo "install happens as part of setup"
+install: echo "Installing"
 script: npm install
-branches:
-  only:
-  - master
+jobs:
+  include:
+    - stage: test
+      script: npm run test
+      on:
+        branch: develop
+    - stage: deploy
+      script: npm run deploy
+        on:
+          branch: master

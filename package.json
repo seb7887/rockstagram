@@ -14,7 +14,9 @@
     "test:coverage": "jest --coverage",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "format": "prettier \"**/*.+(js|json|less|css|ts|tsx|md)\" --write",
-    "precommit": "npm run format"
+    "precommit": "npm run format",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/seb7887/rockstagram/issues"
   },
-  "homepage": "https://github.com/seb7887/rockstagram#readme",
+  "homepage": "https://seb7887.github.io/rockstagram/",
   "devDependencies": {
     "@babel/core": "^7.3.3",
     "@babel/plugin-proposal-class-properties": "^7.3.3",
