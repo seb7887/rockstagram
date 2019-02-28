@@ -12,29 +12,16 @@
         [
           "babel-plugin-styled-components"
         ],
+      ]
+    },
+    "test": {
+      "plugins": [
         [
-          "react-transform",
-          {
-            "transforms": [
-              {
-                "transform": "react-transform-hmr",
-                "imports": [
-                  "react"
-                ],
-                "locals": [
-                  "module"
-                ]
-              },
-              {
-                "transform": "react-transform-catch-errors",
-                "imports": [
-                  "react",
-                  "redbox-react"
-                ]
-              }
-            ]
-          }
-        ]
+          "@babel/plugin-proposal-class-properties"
+        ],
+        [
+          "babel-plugin-styled-components"
+        ],
       ]
     },
     "production": {
@@ -45,12 +32,6 @@
         [
           "babel-plugin-styled-components"
         ],
-        [
-          "transform-object-rest-spead"
-        ],
-        [
-          "transform-react-display-name"
-        ]
       ]
     }
   }

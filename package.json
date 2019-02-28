@@ -14,7 +14,9 @@
     "test:coverage": "jest --coverage",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "format": "prettier \"**/*.+(js|json|less|css|ts|tsx|md)\" --write",
-    "precommit": "npm run format"
+    "precommit": "npm run format",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/seb7887/rockstagram/issues"
   },
-  "homepage": "https://github.com/seb7887/rockstagram#readme",
+  "homepage": "https://seb7887.github.io/rockstagram/",
   "devDependencies": {
     "@babel/core": "^7.3.3",
     "@babel/plugin-proposal-class-properties": "^7.3.3",
@@ -49,6 +51,7 @@
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-react": "^7.12.4",
     "file-loader": "^3.0.1",
+    "gh-pages": "^2.0.1",
     "html-webpack-plugin": "^3.2.0",
     "is-ci-cli": "^1.1.1",
     "jest": "^24.1.0",
@@ -72,10 +75,11 @@
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-redux": "^6.0.1",
-    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "react-router-redux": "^4.0.8",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
+    "react-transition-group": "^2.5.3",
     "redbox-react": "^1.6.0",
     "redux": "^4.0.1",
     "styled-components": "^4.1.3"
