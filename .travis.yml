@@ -16,5 +16,5 @@ jobs:
         branch: develop
     - stage: deploy
       script: npm run deploy
-        on:
-          branch: master
+      on:
+        branch: master
