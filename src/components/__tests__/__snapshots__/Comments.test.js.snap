@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Comments/> renders and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="CommentStyles__CommentGrid-qqfm26-1 gNQaPS"
+  >
+    <div
+      class="CommentStyles__Comment-qqfm26-0 bcqYLs"
+      data-testid="comment"
+    >
+      <p>
+        <strong>
+          kingmob
+        </strong>
+        This is a test
+        <button
+          class="remove-comment"
+          data-testid="remove-comment"
+        >
+          ×
+        </button>
+      </p>
+    </div>
+    <form
+      class="comment-form"
+      data-testid="form"
+    >
+      <input
+        data-testid="author"
+        placeholder="Author"
+        type="text"
+      />
+      <input
+        data-testid="text"
+        placeholder="Comment here..."
+        type="text"
+      />
+      <input
+        hidden=""
+        type="submit"
+      />
+    </form>
+  </div>
+</DocumentFragment>
+`;
