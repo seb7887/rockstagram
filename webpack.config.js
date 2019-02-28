@@ -14,9 +14,8 @@ module.exports = ({ mode }) => {
       devtool: 'source-map',
       entry: ['./src/index.js'],
       output: {
-        path: path.join(__dirname, '../dist'),
+        path: path.join(__dirname, './dist'),
         filename: 'bundle.js',
-        publicPath: '/static/',
       },
       module: {
         rules: [
