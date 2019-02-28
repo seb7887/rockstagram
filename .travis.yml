@@ -3,7 +3,8 @@ node_js:
   - "lts/*"
 cache:
   directories:
-    - ".npm"
+    - ~/.npm
+    - ~/.cache
 notifications:
   email: false
 install: echo "Installing"
