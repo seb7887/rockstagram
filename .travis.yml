@@ -8,9 +8,10 @@ cache:
 notifications:
   email: false
 install: echo "Installing"
-script: npm install
 jobs:
   include:
+    - stage: setup
+      script: npm install
     - stage: test
       script: npm run test
       on:
