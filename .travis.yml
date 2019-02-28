@@ -13,6 +13,7 @@ jobs:
     - stage: setup
       script: npm install
     - stage: test
+      script: npm install
       script: npm run test
       on:
         branch: develop
