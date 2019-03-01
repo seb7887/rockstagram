@@ -20,7 +20,7 @@ const Photo = ({ post, i, comments, incrementLikes }) => (
         <button className='likes' onClick={incrementLikes.bind(null, i)}>
           <i className='fa fa-heart' data-testid='likes' /> {post.likes}
         </button>
-        <Link to={`/view/${post.code}`} className='button'>
+        <Link to={`/rockstagram/view/${post.code}`} className='button'>
           <span className='comment-count' data-testid='count'>
             <i className='fa fa-comment' />{' '}
             {comments[post.code] ? comments[post.code].length : 0}

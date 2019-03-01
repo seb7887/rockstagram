@@ -25,14 +25,17 @@ exports[`<Comments/> renders and matches snapshot 1`] = `
     <form
       class="comment-form"
       data-testid="form"
+      id="form"
     >
       <input
         data-testid="author"
+        name="author"
         placeholder="Author"
         type="text"
       />
       <input
         data-testid="text"
+        name="comment"
         placeholder="Comment here..."
         type="text"
       />
