@@ -52,7 +52,7 @@ exports[`<Single/> renders and matches snapshot 1`] = `
           </button>
           <a
             class="button"
-            href="/view/test"
+            href="/rockstagram/view/test"
           >
             <span
               class="comment-count"
@@ -90,14 +90,17 @@ exports[`<Single/> renders and matches snapshot 1`] = `
       <form
         class="comment-form"
         data-testid="form"
+        id="form"
       >
         <input
           data-testid="author"
+          name="author"
           placeholder="Author"
           type="text"
         />
         <input
           data-testid="text"
+          name="comment"
           placeholder="Comment here..."
           type="text"
         />

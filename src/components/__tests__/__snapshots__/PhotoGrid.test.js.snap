@@ -52,7 +52,7 @@ exports[`<PhotoGrid/> renders and matches snapshot 1`] = `
           </button>
           <a
             class="button"
-            href="/view/test"
+            href="/rockstagram/view/test"
           >
             <span
               class="comment-count"
