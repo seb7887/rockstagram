@@ -1,8 +1,11 @@
 const http = require('http');
 const app = require('./app');
+const config = require('./config');
+
+const port = parseInt(config.port, 10);
 
 const server = http.createServer(app);
 
-server.listen(9000, () => {
-  console.log('Listen on port 9000');
+server.listen(port, () => {
+  console.log(`Listen on port ${port}`);
 });
