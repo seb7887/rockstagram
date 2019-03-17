@@ -7,10 +7,6 @@ const config = {
   db: process.env.DB,
   dbUser: process.env.DB_USER,
   dbPwd: process.env.DB_PWD,
-  dbParams: {
-    dialect: 'postgres',
-    logging: false,
-  },
 };
 
 module.exports = config;

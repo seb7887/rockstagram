@@ -13,10 +13,15 @@ let db = null;
 module.exports = () => {
   if (!db) {
     const sequelize = new Sequelize(
+      config.db,
       config.dbUser,
       config.dbPwd,
-      config.dbParams,
+      {
+        dialect: 'postgres'
+      }
     );
+
+    db = {};
 
     const dir = path.join(__dirname, 'models');
     fs.readdirSync(dir).filter(file => {
@@ -35,5 +40,6 @@ module.exports = () => {
     db.Sequelize = Sequelize;
   }
 
+  console.log('Hola');
   return db;
 };
