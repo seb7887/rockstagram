@@ -7,6 +7,10 @@ const config = require('./config');
 
 const port = parseInt(config.port, 10);
 
+/**
+ * @name api-server
+ */
+
 const server = http.createServer(app);
 
 server.listen(port, () => {

@@ -1,6 +1,7 @@
 # Server TODO
 
 - [x] DB Connection
+- [ ] Error handler
 - [ ] Register User
 - [ ] Auth User
 - [ ] Redis w/ JWT Tokens
@@ -15,6 +16,7 @@
 - [ ] Like/Unlike Photo
 - [ ] Add hashtags
 - [ ] Show hashtags
+- [ ] Logger
 - [ ] Sentry
 - [ ] Recovery Password
 - [ ] Search Users / Hashtags
