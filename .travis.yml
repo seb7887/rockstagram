@@ -11,7 +11,7 @@ install: echo "Installing"
 jobs:
   include:
     - stage: test
-      script: npm install && npm run test
+      script: npm install && cd server && npm install && cd .. && npm run test
       on:
         branch: develop
 stages:
