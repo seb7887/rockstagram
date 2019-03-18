@@ -2,14 +2,18 @@ const express = require('express');
 const helmet = require('helmet');
 const compression = require('compression');
 const cors = require('cors');
+const chalk = require('chalk');
 
 const app = express();
+const routes = require('./routes');
 
 const dev = process.env.NODE_ENV !== 'production';
 
 /**
  * @name middleware-functions
  */
+const errorHandler = require('./handlers/error');
+
 if (!dev) {
   app.use(compression());
 }
@@ -22,6 +26,17 @@ app.use(helmet());
 /**
  * @name REST-Routes
  */
-app.get('/', (req, res) => res.status(200).json('Hello World!'));
+app.use('/api', routes);
+
+/**
+ * @name error-handling
+ */
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+app.use(errorHandler);
 
 module.exports = app;

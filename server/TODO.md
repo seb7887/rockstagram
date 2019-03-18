@@ -1,8 +1,8 @@
 # Server TODO
 
 - [x] DB Connection
-- [ ] Error handler
-- [ ] Register User
+- [x] Error handler
+- [ ] Register User (w/ Validation)
 - [ ] Auth User
 - [ ] Redis w/ JWT Tokens
 - [ ] Cloudinary
