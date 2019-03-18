@@ -7,8 +7,13 @@ const router = express.Router();
 const userController = require('../controllers/user');
 
 /**
- * @name auth-routes
+ * @name middleware
  */
-router.post('/users', userController.signup);
+const validation = require('../middleware/validation');
+
+/**
+ * @name users-routes
+ */
+router.post('/users', validation.validateRegister, userController.signup);
 
 module.exports = router;

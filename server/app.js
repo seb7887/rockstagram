@@ -2,7 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const compression = require('compression');
 const cors = require('cors');
-const chalk = require('chalk');
+const validator = require('express-validator');
 
 const app = express();
 const routes = require('./routes');
@@ -20,6 +20,7 @@ if (!dev) {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(validator());
 app.use(cors());
 app.use(helmet());
 

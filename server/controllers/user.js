@@ -1,7 +1,9 @@
 exports.signup = async (req, res, next) => {
   const { name, email, password } = req.body;
   try {
-    throw new Error('Testing Error Handler...');
+    const error = new Error('Testing Error Handler...');
+    error.status = 400;
+    throw error;
   } catch (err) {
     next(err);
   }
