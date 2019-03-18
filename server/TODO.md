@@ -1,0 +1,21 @@
+# Server TODO
+
+- [x] DB Connection
+- [ ] Register User
+- [ ] Auth User
+- [ ] Redis w/ JWT Tokens
+- [ ] Cloudinary
+- [ ] Update Profile
+- [ ] Delete Account
+- [ ] Post Photo
+- [ ] Edit Photo (only caption)
+- [ ] Delete Photo
+- [ ] Add Comments
+- [ ] Delete Comments
+- [ ] Like/Unlike Photo
+- [ ] Add hashtags
+- [ ] Show hashtags
+- [ ] Sentry
+- [ ] Recovery Password
+- [ ] Search Users / Hashtags
+- [ ] Security

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('user', {
+  const User = sequelize.define('User', {
     name: {
       type: DataTypes.STRING,
       unique: true,
@@ -10,7 +10,19 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       allowNull: false,
     },
+    bio: {
+      type: DataTypes.STRING,
+    },
+    profilePic: {
+      type: DataTypes.STRING,
+    },
   });
+
+  User.associate = models => {
+    User.hasMany(models.Comment);
+    User.hasMany(models.Photo);
+    User.hasMany(models.Like);
+  };
 
   return User;
 };

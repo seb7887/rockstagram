@@ -5,21 +5,13 @@ const config = require('../config');
 
 let db = null;
 
-// Singleton Pattern for db
-
-// To connect create database in Postgres
-// sudo -u postgres createuser owning_user
-// sudo -u postgres createdb -O owning_user dbname
+// Singleton Pattern to guarantee only one db's instance
 module.exports = () => {
   if (!db) {
-    const sequelize = new Sequelize(
-      config.db,
-      config.dbUser,
-      config.dbPwd,
-      {
-        dialect: 'postgres'
-      }
-    );
+    const sequelize = new Sequelize(config.db, config.dbUser, config.dbPwd, {
+      dialect: 'postgres',
+      logging: false,
+    });
 
     db = {};
 
@@ -40,6 +32,5 @@ module.exports = () => {
     db.Sequelize = Sequelize;
   }
 
-  console.log('Hola');
   return db;
 };
