@@ -14,7 +14,7 @@
     "dev": "npm-run-all --parallel dev:*",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test": "is-ci \"test:coverage\" \"test:watch\"",
+    "test": "NODE_ENV=test is-ci \"test:coverage\" \"test:watch\"",
     "start:server": "node server",
     "start:client": "serve --no-clipboard --single --listen 8080 dist",
     "start": "npm-run-all --parallel start:*",

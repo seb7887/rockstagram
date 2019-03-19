@@ -2,7 +2,7 @@
 
 - [x] DB Connection
 - [x] Error handler
-- [ ] Register User (w/ Validation)
+- [x] Register User (w/ Validation)
 - [ ] Auth User
 - [ ] Redis w/ JWT Tokens
 - [ ] Cloudinary
