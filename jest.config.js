@@ -3,6 +3,9 @@ module.exports = {
   modulePaths: ['<rootDir>'],
   collectCoverageFrom: [
     '**/src/**/*.js',
+    '**/server/**/*.js',
+    '!**/server/index.js',
+    '!**/server/config/*.js',
     '!**/styles/**',
     '!**/data/**',
     '!**/__tests__/**',

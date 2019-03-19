@@ -7,6 +7,10 @@ const config = require('./config');
 
 const port = parseInt(config.port, 10);
 
+/**
+ * @name api-server
+ */
+
 const server = http.createServer(app);
 
 server.listen(port, () => {
@@ -16,3 +20,5 @@ server.listen(port, () => {
     .catch(err => console.log(err));
   console.log(chalk.bgCyan.black.bold(`Listen on port ${port}`));
 });
+
+module.exports = server;
