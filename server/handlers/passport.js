@@ -1,6 +1,10 @@
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const LocalStrategy = require('passport-local');
+const JWTStrategy = require('passport-jwt').Strategy;
+const ExtractJWT = require('passport-jwt').ExtractJwt;
+
+const { jwtSecret } = require('../config');
 
 const db = require('../db');
 const Login = db().Login;
@@ -35,6 +39,34 @@ passport.use(
       // Get the authenticated user
       const user = await User.findOne({ where: { email } });
 
+      return done(null, user);
+    } catch (err) {
+      return done(err);
+    }
+  }),
+);
+
+/**
+ * @name jwt-stategy
+ */
+
+const jwtOpts = {
+  secretOrKey: jwtSecret,
+  jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+};
+
+passport.use(
+  'jwt',
+  new JWTStrategy(jwtOpts, async (token, done) => {
+    try {
+      const user = await User.findOne({ where: { id: token.id } });
+
+      // Check if the token has expired
+      if (Date.now() < token.expires) {
+        throw new Error('Token expired');
+      }
+
+      // Everything is OK
       return done(null, user);
     } catch (err) {
       return done(err);

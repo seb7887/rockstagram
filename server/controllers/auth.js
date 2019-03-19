@@ -4,13 +4,12 @@ const jwt = require('jsonwebtoken');
 const { jwtSecret } = require('../config');
 
 const signToken = id => {
-  const jwtPayload = { id };
+  const jwtPayload = { id, expires: 1000 * 60 * 60 * 24 * 31 };
   return jwt.sign(jwtPayload, jwtSecret);
 };
 
 const createSession = id => {
-  const token = signToken(id);
-  return token;
+  return signToken(id);
 };
 
 exports.signin = (req, res, next) => {
