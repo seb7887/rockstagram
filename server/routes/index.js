@@ -4,6 +4,7 @@ const router = express.Router();
 /**
  * @name controllers
  */
+const authController = require('../controllers/auth');
 const userController = require('../controllers/user');
 
 /**
@@ -12,8 +13,18 @@ const userController = require('../controllers/user');
 const validation = require('../middleware/validation');
 
 /**
+ * @name auth-routes
+ */
+router.post('/signin', authController.signin);
+
+/**
  * @name users-routes
  */
-router.post('/users', validation.validateRegister, userController.signup);
+router.post(
+  '/users',
+  validation.validateRegister,
+  userController.signup,
+  authController.signin,
+);
 
 module.exports = router;

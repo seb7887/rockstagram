@@ -10,17 +10,26 @@ global.console = {
   log: jest.fn(),
 };
 
+const clearDB = async () => {
+  await db().User.destroy({ where: {} });
+  await db().Login.destroy({ where: {} });
+};
+
 describe('/users', () => {
   beforeEach(async () => {
-    await db().User.destroy({ where: {} });
+    await clearDB();
   });
 
   afterEach(async () => {
     await server.close();
   });
 
+  afterAll(async () => {
+    await clearDB();
+  });
+
   describe('POST', () => {
-    it('cannot create an user if name contains less than 2 characters', async () => {
+    it('cannot create a user if name contains less than 2 characters', async () => {
       const res = await request(server)
         .post(endpoint)
         .send({
@@ -35,7 +44,7 @@ describe('/users', () => {
       );
     });
 
-    it('cannot create an user if email is not valid', async () => {
+    it('cannot create a user if email is not valid', async () => {
       const res = await request(server)
         .post(endpoint)
         .send({
@@ -48,7 +57,7 @@ describe('/users', () => {
       expect(res.body.error.message).toBe('Invalid Email');
     });
 
-    it('cannot create an user if password contains less than 4 characters', async () => {
+    it('cannot create a user if password contains less than 4 characters', async () => {
       const res = await request(server)
         .post(endpoint)
         .send({
@@ -63,7 +72,7 @@ describe('/users', () => {
       );
     });
 
-    it('should create an user', async () => {
+    it('should create a user', async () => {
       const user = {
         name: 'Test',
         email: faker.internet.email(),
@@ -73,10 +82,15 @@ describe('/users', () => {
       const res = await request(server)
         .post(endpoint)
         .send(user)
-        .expect(201);
+        .expect(200);
 
-      expect(res.body.name).toBe(user.name);
-      expect(res.body.email).toBe(user.email.toLowerCase());
+      const cookie = res.headers['set-cookie'][0]
+        .split(';')
+        .map(item => item.split(';')[0])
+        .join(';');
+
+      expect(cookie).toContain('token');
+      expect(res.body).toHaveProperty('userId');
     });
   });
 });

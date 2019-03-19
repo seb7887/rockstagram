@@ -7,6 +7,7 @@ const config = {
   db: isTest ? 'rockstagramdev' : process.env.DB,
   dbUser: isTest ? 'postgres' : process.env.DB_USER,
   dbPwd: isTest ? '' : process.env.DB_PWD,
+  jwtSecret: process.env.JWTSECRET || 'jwtsecret',
 };
 
 module.exports = config;
