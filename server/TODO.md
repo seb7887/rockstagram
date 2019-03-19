@@ -3,8 +3,8 @@
 - [x] DB Connection
 - [x] Error handler
 - [x] Register User (w/ Validation)
-- [ ] Auth User
-- [ ] Redis w/ JWT Tokens
+- [x] Auth User
+- [x] Token Expiration
 - [ ] Cloudinary
 - [ ] Update Profile
 - [ ] Delete Account

@@ -6,13 +6,15 @@ const validator = require('express-validator');
 
 const app = express();
 const routes = require('./routes');
+const errorHandler = require('./handlers/error');
+
+require('./handlers/passport');
 
 const dev = process.env.NODE_ENV !== 'production';
 
 /**
  * @name middleware-functions
  */
-const errorHandler = require('./handlers/error');
 
 if (!dev) {
   app.use(compression());
