@@ -6,6 +6,7 @@ const server = require('../index');
 const db = require('../db');
 
 const endpoint = '/api/signin';
+const signout = '/api/signout';
 
 global.console = {
   log: jest.fn(),
@@ -95,6 +96,17 @@ describe('/signin', () => {
 
       expect(cookie).toContain('token');
       expect(res.body).toHaveProperty('userId');
+    });
+  });
+
+  describe('/signout', () => {
+    it('should sign out a user', async () => {
+      const res = await request(server)
+        .post(signout)
+        .expect(200);
+
+      expect(res.body).toHaveProperty('message');
+      expect(res.body.message).toBe('Goodbye!');
     });
   });
 });

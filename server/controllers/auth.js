@@ -28,3 +28,8 @@ exports.signin = (req, res, next) => {
     return res.status(200).json({ userId: user.id });
   })(req, res);
 };
+
+exports.signout = (req, res, next) => {
+  res.clearCookie('token');
+  res.status(200).json({ message: 'Goodbye!' });
+};
