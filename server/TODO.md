@@ -9,6 +9,8 @@
 - [x] Update Profile
 - [x] Delete Account
 - [ ] Post Photo
+- [ ] Get Photos
+- [ ] Get Photo
 - [ ] Edit Photo (only caption)
 - [ ] Delete Photo
 - [ ] Add Comments

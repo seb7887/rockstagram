@@ -7,6 +7,7 @@ const passport = require('passport');
  */
 const authController = require('../controllers/auth');
 const userController = require('../controllers/user');
+const postController = require('../controllers/post');
 
 /**
  * @name middleware
@@ -40,6 +41,15 @@ router.delete(
   '/users/:id',
   passport.authenticate('jwt', { session: false }),
   userController.deleteUser,
+);
+
+/**
+ * @name posts-routes
+ */
+router.post(
+  '/posts',
+  passport.authenticate('jwt', { session: false }),
+  postController.createPost,
 );
 
 module.exports = router;
