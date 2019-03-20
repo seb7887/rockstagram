@@ -5,9 +5,9 @@
 - [x] Register User (w/ Validation)
 - [x] Auth User
 - [x] Token Expiration
-- [ ] Cloudinary
-- [ ] Update Profile
-- [ ] Delete Account
+- [x] Get Profile
+- [x] Update Profile
+- [x] Delete Account
 - [ ] Post Photo
 - [ ] Edit Photo (only caption)
 - [ ] Delete Photo
@@ -21,3 +21,4 @@
 - [ ] Recovery Password
 - [ ] Search Users / Hashtags
 - [ ] Security
+- [ ] Documentation

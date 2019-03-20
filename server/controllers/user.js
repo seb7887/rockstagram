@@ -4,6 +4,9 @@ const db = require('../db');
 const User = db().User;
 const Login = db().Login;
 
+/**
+ * @name create-user
+ */
 const hashPwd = password => {
   const salt = bcrypt.genSaltSync();
   const hash = bcrypt.hashSync(password, salt);
@@ -26,5 +29,94 @@ exports.signup = async (req, res, next) => {
     return next();
   } catch (err) {
     next(err);
+  }
+};
+
+/**
+ * @name read-user
+ */
+const throwError = () => {
+  throw new Error('Cannot find user');
+};
+
+const findUser = async id => {
+  const user = await User.findOne({ where: { id } });
+  if (!user) {
+    throwError();
+  }
+
+  return user;
+};
+
+exports.getUser = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const user = await findUser(id);
+
+    if (!user) {
+      throwError();
+    }
+
+    return res.status(200).json({ user });
+  } catch (err) {
+    next({ status: 400, message: err.message });
+  }
+};
+
+/**
+ * @name update-user
+ */
+exports.updateUser = async (req, res, next) => {
+  const { id } = req.params;
+  const { name, email, bio, profilePic } = req.body;
+
+  try {
+    // Find the user to update and update login model
+    const user = await findUser(id);
+
+    const updatedLogin = await Login.update(
+      { email },
+      { where: { email: user.email } },
+    );
+
+    // Update user model
+    const updatedUser = await User.update(
+      { name, email, bio, profilePic },
+      { where: { id } },
+    );
+
+    if (!updatedUser[0] || !updatedLogin[0]) {
+      throwError();
+    }
+
+    return res.status(200).json({ message: 'User Updated!' });
+  } catch (err) {
+    next({ status: 400, message: err.message });
+  }
+};
+
+/**
+ * @name delete-user
+ */
+exports.deleteUser = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    // Find the user to delete and destroy login model
+    const user = await findUser(id);
+
+    const deletedLogin = await Login.destroy({ where: { email: user.email } });
+
+    // Destroy user model
+    const deletedUser = await User.destroy({ where: { id } });
+
+    if (!deletedUser || !deletedLogin) {
+      throwError();
+    }
+
+    return res.status(200).json({ message: 'Account deleted' });
+  } catch (err) {
+    next({ status: 400, message: err.message });
   }
 };
