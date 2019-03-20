@@ -17,6 +17,7 @@ const validation = require('../middleware/validation');
  * @name auth-routes
  */
 router.post('/signin', authController.signin);
+router.post('/signout', authController.signout);
 
 /**
  * @name users-routes
