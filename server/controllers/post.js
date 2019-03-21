@@ -1,5 +1,3 @@
-const passport = require('passport');
-
 const db = require('../db');
 const Photo = db().Photo;
 const User = db().User;
@@ -22,7 +20,7 @@ exports.createPost = async (req, res, next) => {
 };
 
 /**
- * @name read-following-posts
+ * @name /api
  */
 exports.getPosts = async (req, res, next) => {
   try {
@@ -89,8 +87,18 @@ exports.getPost = async (req, res, next) => {
 /**
  * @name error-notification
  */
-const throwError = () => {
-  throw new Error('Cannot find post');
+const throwError = status => {
+  let err;
+
+  if (status === 403) {
+    err = new Error('Forbidden');
+    err.status = status;
+  } else {
+    err = new Error('Cannot find post');
+    err.status = 400;
+  }
+
+  throw err;
 };
 
 /**
@@ -102,18 +110,20 @@ exports.checkOwner = async (req, res, next) => {
 
   try {
     const post = await findPost(id);
-    console.log('post', post);
+
+    if (!post) {
+      throwError(400);
+    }
 
     const isOwner = userId === post.User.id;
-    console.log('isOwner', isOwner);
 
     if (!isOwner) {
-      throw new Error('Forbidden');
+      throwError(403);
     }
 
     return next();
   } catch (err) {
-    next({ status: 403, message: err.message });
+    next({ status: err.status, message: err.message });
   }
 };
 
@@ -132,13 +142,9 @@ exports.editPost = async (req, res, next) => {
       { where: { id } },
     );
 
-    if (!updatedPhoto[0]) {
-      throwError();
-    }
-
     return res.status(200).json({ message: 'Post updated!' });
   } catch (err) {
-    next({ status: 400, message: err.message });
+    next({ status: err.status, message: err.message });
   }
 };
 
@@ -151,12 +157,8 @@ exports.deletePost = async (req, res, next) => {
   try {
     const deletedPost = await Photo.destroy({ where: { id } });
 
-    if (!deletedPost) {
-      throwError();
-    }
-
     return res.status(200).json({ message: 'Post deleted' });
   } catch (err) {
-    next({ status: 400, message: err.message });
+    next({ status: err.status, message: err.message });
   }
 };
