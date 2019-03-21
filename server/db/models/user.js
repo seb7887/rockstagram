@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: 'cascade',
     });
     User.hasMany(models.Comment);
-    User.hasMany(models.Photo);
+    User.hasMany(models.Photo, { foreignKey: 'userId', sourceKey: 'id' });
     User.hasMany(models.Like);
   };
 

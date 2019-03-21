@@ -8,11 +8,13 @@
 - [x] Get Profile
 - [x] Update Profile
 - [x] Delete Account
-- [ ] Post Photo
-- [ ] Get Photos
-- [ ] Get Photo
-- [ ] Edit Photo (only caption)
-- [ ] Delete Photo
+- [x] Post Photo
+- [x] Get Photos
+- [x] Get Photo
+- [x] Edit Photo (only caption)
+- [x] Delete Photo
+- [x] Validate inputs Photo
+- [ ] Followers
 - [ ] Add Comments
 - [ ] Delete Comments
 - [ ] Like/Unlike Photo

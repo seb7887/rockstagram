@@ -49,7 +49,23 @@ router.delete(
 router.post(
   '/posts',
   passport.authenticate('jwt', { session: false }),
+  validation.validatePost,
   postController.createPost,
+);
+router.get('/posts', postController.getUserPosts);
+router.get('/posts/:id', postController.getPost);
+router.put(
+  '/posts/:id',
+  passport.authenticate('jwt', { session: false }),
+  validation.validatePostEdit,
+  postController.checkOwner,
+  postController.editPost,
+);
+router.delete(
+  '/posts/:id',
+  passport.authenticate('jwt', { session: false }),
+  postController.checkOwner,
+  postController.deletePost,
 );
 
 module.exports = router;
