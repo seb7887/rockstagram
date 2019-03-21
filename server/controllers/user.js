@@ -22,10 +22,10 @@ const generateLogin = async (email, password) => {
 exports.signup = async (req, res, next) => {
   const { name, email, password } = req.body;
   try {
-    // Hash password and store it in Login model
-    const login = generateLogin(email, password);
     // Create a new user
     const user = await User.create({ name, email });
+    // Hash password and store it in Login model
+    const login = await generateLogin(email, password);
     return next();
   } catch (err) {
     next(err);
@@ -72,21 +72,13 @@ exports.updateUser = async (req, res, next) => {
   const { name, email, bio, profilePic } = req.body;
 
   try {
-    // Find the user to update and update login model
-    const user = await findUser(id);
-
-    const updatedLogin = await Login.update(
-      { email },
-      { where: { email: user.email } },
-    );
-
     // Update user model
     const updatedUser = await User.update(
       { name, email, bio, profilePic },
       { where: { id } },
     );
 
-    if (!updatedUser[0] || !updatedLogin[0]) {
+    if (!updatedUser[0]) {
       throwError();
     }
 
@@ -103,15 +95,10 @@ exports.deleteUser = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    // Find the user to delete and destroy login model
-    const user = await findUser(id);
-
-    const deletedLogin = await Login.destroy({ where: { email: user.email } });
-
     // Destroy user model
     const deletedUser = await User.destroy({ where: { id } });
 
-    if (!deletedUser || !deletedLogin) {
+    if (!deletedUser) {
       throwError();
     }
 

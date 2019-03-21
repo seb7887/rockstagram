@@ -19,6 +19,13 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = models => {
+    User.hasOne(models.Login, {
+      foreignKey: 'email',
+      sourceKey: 'email',
+      constraints: false,
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    });
     User.hasMany(models.Comment);
     User.hasMany(models.Photo);
     User.hasMany(models.Like);
