@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
+    comments: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   });
 
   Photo.associate = models => {
