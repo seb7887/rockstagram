@@ -90,7 +90,12 @@ router.delete(
 router.get(
   '/feed',
   passport.authenticate('jwt', { session: false }),
-  feedController.getFeed,
+  feedController.getPostFeed,
+);
+router.get(
+  '/users/feed',
+  passport.authenticate('jwt', { session: false }),
+  feedController.getUserFeed,
 );
 
 module.exports = router;

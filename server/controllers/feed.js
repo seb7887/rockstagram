@@ -7,7 +7,7 @@ const Follow = db().Follow;
 /**
  * @name /api/feed
  */
-exports.getFeed = async (req, res, next) => {
+exports.getPostFeed = async (req, res, next) => {
   const followerId = req.user.id;
 
   try {
@@ -29,6 +29,24 @@ exports.getFeed = async (req, res, next) => {
     });
 
     return res.status(200).json({ posts });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.getUserFeed = async (req, res, next) => {
+  const followerId = req.user.id;
+
+  try {
+    const users = await Follow.findAll({
+      where: {
+        [Op.not]: {
+          followerId,
+        },
+      },
+    });
+
+    return res.status(200).json({ users });
   } catch (err) {
     next(err);
   }

@@ -34,11 +34,6 @@ const photo = {
   caption: 'Fnord!',
 };
 
-const anotherPhoto = {
-  imageUrl: faker.image.avatar(),
-  caption: 'Some text',
-};
-
 describe('/posts', () => {
   beforeEach(async () => {
     await clearDB();
