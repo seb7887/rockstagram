@@ -14,7 +14,9 @@
 - [x] Edit Photo (only caption)
 - [x] Delete Photo
 - [x] Validate inputs Photo
-- [ ] Followers
+- [x] Followers
+- [x] Posts Feed
+- [x] Users Feed
 - [ ] Add Comments
 - [ ] Delete Comments
 - [ ] Like/Unlike Photo
@@ -27,3 +29,4 @@
 - [ ] Security
 - [ ] Documentation
 - [ ] Traceslash
+- [ ] Refactoring Model Methods

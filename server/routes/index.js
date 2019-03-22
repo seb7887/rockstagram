@@ -8,6 +8,8 @@ const passport = require('passport');
 const authController = require('../controllers/auth');
 const userController = require('../controllers/user');
 const postController = require('../controllers/post');
+const followController = require('../controllers/follow');
+const feedController = require('../controllers/feed');
 
 /**
  * @name middleware
@@ -66,6 +68,34 @@ router.delete(
   passport.authenticate('jwt', { session: false }),
   postController.checkOwner,
   postController.deletePost,
+);
+
+/**
+ * @name follow-routes
+ */
+router.post(
+  '/follow/:followingId',
+  passport.authenticate('jwt', { session: false }),
+  followController.follow,
+);
+router.delete(
+  '/follow/:followingId',
+  passport.authenticate('jwt', { session: false }),
+  followController.unfollow,
+);
+
+/**
+ * @name feed-routes
+ */
+router.get(
+  '/feed/posts',
+  passport.authenticate('jwt', { session: false }),
+  feedController.getPostFeed,
+);
+router.get(
+  '/feed/users',
+  passport.authenticate('jwt', { session: false }),
+  feedController.getUserFeed,
 );
 
 module.exports = router;
