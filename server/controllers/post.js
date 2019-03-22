@@ -20,22 +20,6 @@ exports.createPost = async (req, res, next) => {
 };
 
 /**
- * @name /api
- */
-exports.getPosts = async (req, res, next) => {
-  try {
-    const posts = await Photo.findAll({
-      attributes: ['id', 'imageUrl', 'caption', 'UserId', 'createdAt'],
-      include: [User],
-      order: [['createdAt', 'DESC']],
-    });
-    return res.status(200).json({ posts });
-  } catch (err) {
-    next(err);
-  }
-};
-
-/**
  * @name /api/posts?user=id
  */
 exports.getUserPosts = async (req, res, next) => {

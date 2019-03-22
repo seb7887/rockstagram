@@ -9,6 +9,7 @@ const authController = require('../controllers/auth');
 const userController = require('../controllers/user');
 const postController = require('../controllers/post');
 const followController = require('../controllers/follow');
+const feedController = require('../controllers/feed');
 
 /**
  * @name middleware
@@ -81,6 +82,15 @@ router.delete(
   '/follow/:followingId',
   passport.authenticate('jwt', { session: false }),
   followController.unfollow,
+);
+
+/**
+ * @name feed-routes
+ */
+router.get(
+  '/feed',
+  passport.authenticate('jwt', { session: false }),
+  feedController.getFeed,
 );
 
 module.exports = router;

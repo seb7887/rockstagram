@@ -12,3 +12,4 @@
 - [ ] Error Boundary
 - [ ] Animations (React Spring?)
 - [ ] Redux Saga
+- [ ] Lambda Test
