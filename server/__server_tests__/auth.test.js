@@ -22,8 +22,8 @@ const generateUser = async user => {
     const { name, email, password } = user;
     const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(password, salt);
-    await db().Login.create({ hash, email });
     await db().User.create({ name, email });
+    await db().Login.create({ hash, email });
   } catch (err) {
     console.log(err.message);
   }

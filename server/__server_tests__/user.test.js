@@ -1,5 +1,6 @@
 const faker = require('faker');
 const request = require('supertest');
+const { registerUser } = require('../utils/testUtils');
 
 const server = require('../index');
 const db = require('../db');
@@ -19,26 +20,6 @@ const generateUser = async user => {
   const { name, email } = user;
   const { id } = await db().User.create({ name, email });
   return id;
-};
-
-const registerUser = async user => {
-  const res = await request(server)
-    .post(endpoint)
-    .send(user)
-    .expect(200);
-
-  const cookie = res.headers['set-cookie'][0]
-    .split(';')
-    .map(item => item.split(';')[0])
-    .join(';');
-
-  expect(cookie).toContain('token');
-  expect(res.body).toHaveProperty('userId');
-
-  const id = res.body.userId;
-  const token = cookie.split(';')[0].split('=')[1];
-
-  return { id, token };
 };
 
 const user = {

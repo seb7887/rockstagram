@@ -4,11 +4,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
   });
+
+  Login.associate = models => {
+    Login.belongsTo(models.User, {
+      foreignKey: 'email',
+      targetKey: 'email',
+      onDelete: 'cascade',
+    });
+  };
 
   return Login;
 };

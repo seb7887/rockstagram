@@ -64,3 +64,14 @@ exports.validateUpdate = (req, res, next) => {
   // Everything is OK!
   next();
 };
+
+exports.validatePost = (req, res, next) => {
+  req.sanitizeBody('caption');
+  req.sanitizeBody('imageUrl');
+  next();
+};
+
+exports.validatePostEdit = (req, res, next) => {
+  req.sanitizeBody('caption');
+  next();
+};
