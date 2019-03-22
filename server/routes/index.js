@@ -88,12 +88,12 @@ router.delete(
  * @name feed-routes
  */
 router.get(
-  '/feed',
+  '/feed/posts',
   passport.authenticate('jwt', { session: false }),
   feedController.getPostFeed,
 );
 router.get(
-  '/users/feed',
+  '/feed/users',
   passport.authenticate('jwt', { session: false }),
   feedController.getUserFeed,
 );
