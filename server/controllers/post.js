@@ -28,7 +28,15 @@ exports.getUserPosts = async (req, res, next) => {
   try {
     const posts = await Photo.findAll({
       where: { UserId: UserId },
-      attributes: ['id', 'imageUrl', 'caption', 'UserId', 'createdAt'],
+      attributes: [
+        'id',
+        'imageUrl',
+        'caption',
+        'UserId',
+        'createdAt',
+        'likes',
+        'comments',
+      ],
       include: [User],
       order: [['createdAt', 'DESC']],
     });

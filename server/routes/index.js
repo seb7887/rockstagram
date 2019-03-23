@@ -8,6 +8,7 @@ const passport = require('passport');
 const authController = require('../controllers/auth');
 const userController = require('../controllers/user');
 const postController = require('../controllers/post');
+const commentController = require('../controllers/comment');
 const followController = require('../controllers/follow');
 const feedController = require('../controllers/feed');
 
@@ -68,6 +69,20 @@ router.delete(
   passport.authenticate('jwt', { session: false }),
   postController.checkOwner,
   postController.deletePost,
+);
+
+/**
+ * @name comments-routes
+ */
+router.post(
+  '/comments',
+  passport.authenticate('jwt', { session: false }),
+  commentController.createComment,
+);
+router.delete(
+  '/comments/:id',
+  passport.authenticate('jwt', { session: false }),
+  commentController.deleteComment,
 );
 
 /**
