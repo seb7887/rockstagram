@@ -20,7 +20,7 @@
 - [x] Add Comments
 - [x] Delete Comments
 - [x] Get Comments
-- [x] Followers/Following
+- [ ] Followers/Following
 - [ ] Like/Unlike Photo
 - [ ] Add hashtags
 - [ ] Show hashtags

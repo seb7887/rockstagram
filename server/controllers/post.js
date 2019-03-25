@@ -53,7 +53,7 @@ exports.getUserPosts = async (req, res, next) => {
 const findPost = async id => {
   const post = await Photo.findOne({
     where: { id },
-    attributes: ['id', 'imageUrl', 'caption', 'UserId', 'createdAt'],
+    attributes: ['id', 'imageUrl', 'caption', 'likes', 'UserId', 'createdAt'],
     include: [User],
   });
 
@@ -71,7 +71,6 @@ exports.getPost = async (req, res, next) => {
   try {
     const post = await findPost(id);
     const comments = await findComments(id);
-    // TODO: comments, etc...
 
     if (!post) {
       throw new Error('Post not found');

@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   Photo.associate = models => {
     Photo.hasMany(models.Comment);
     Photo.belongsTo(models.User);
+    Photo.hasMany(models.Like);
   };
 
   return Photo;
