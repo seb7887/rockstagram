@@ -21,14 +21,14 @@
 - [x] Delete Comments
 - [x] Get Comments
 - [ ] Followers/Following
-- [ ] Like/Unlike Photo
+- [x] Like/Unlike Photo
 - [ ] Add hashtags
 - [ ] Show hashtags
-- [ ] Logger
+- [x] Logger
 - [ ] Sentry
 - [ ] Recovery Password
 - [ ] Search Users / Hashtags
 - [ ] Security
 - [ ] Documentation
-- [ ] Traceslash
+- [x] Traceslash
 - [ ] Refactoring Model Methods
