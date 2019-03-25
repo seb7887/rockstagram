@@ -3,3 +3,4 @@ DB=
 DB_USER=
 DB_PWD=
 JWTSECRET=
+SENTRY_DSN="https://cf3a5b09794b4591a7616f5cf703bd2c@sentry.io/1423321"
