@@ -25,10 +25,10 @@
 - [ ] Add hashtags
 - [ ] Show hashtags
 - [x] Logger
-- [ ] Sentry
+- [x] Sentry
 - [ ] Recovery Password
 - [ ] Search Users / Hashtags
-- [ ] Security
+- [x] Security
 - [ ] Documentation
 - [x] Traceslash
 - [ ] Refactoring Model Methods

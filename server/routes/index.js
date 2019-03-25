@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const ExpressBrute = require('express-brute');
 
 /**
  * @name controllers
@@ -19,9 +20,15 @@ const feedController = require('../controllers/feed');
 const validation = require('../middleware/validation');
 
 /**
+ * @name brute-force-protection
+ */
+const store = new ExpressBrute.MemoryStore();
+const bruteforce = new ExpressBrute(store);
+
+/**
  * @name auth-routes
  */
-router.post('/signin', authController.signin);
+router.post('/signin', bruteforce.prevent, authController.signin);
 router.post('/signout', authController.signout);
 
 /**
