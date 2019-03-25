@@ -1,6 +1,7 @@
 const db = require('../db');
 const Photo = db().Photo;
 const User = db().User;
+const Comment = db().Comment;
 
 /**
  * @name /api/posts
@@ -28,7 +29,15 @@ exports.getUserPosts = async (req, res, next) => {
   try {
     const posts = await Photo.findAll({
       where: { UserId: UserId },
-      attributes: ['id', 'imageUrl', 'caption', 'UserId', 'createdAt'],
+      attributes: [
+        'id',
+        'imageUrl',
+        'caption',
+        'UserId',
+        'createdAt',
+        'likes',
+        'comments',
+      ],
       include: [User],
       order: [['createdAt', 'DESC']],
     });
@@ -51,18 +60,24 @@ const findPost = async id => {
   return post;
 };
 
+const findComments = async id => {
+  const comments = await Comment.findAll({ where: { PhotoId: id } });
+  return comments;
+};
+
 exports.getPost = async (req, res, next) => {
   const { id } = req.params;
 
   try {
     const post = await findPost(id);
+    const comments = await findComments(id);
     // TODO: comments, etc...
 
     if (!post) {
       throw new Error('Post not found');
     }
 
-    return res.status(200).json({ post });
+    return res.status(200).json({ post, comments });
   } catch (err) {
     next({ status: 404, message: err.message });
   }

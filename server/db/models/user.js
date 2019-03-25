@@ -16,6 +16,14 @@ module.exports = (sequelize, DataTypes) => {
     profilePic: {
       type: DataTypes.STRING,
     },
+    following: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    followers: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   });
 
   User.associate = models => {
