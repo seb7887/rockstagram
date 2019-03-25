@@ -9,6 +9,7 @@ const config = {
   dbPwd: isTest ? '' : process.env.DB_PWD,
   redisURI: '',
   jwtSecret: process.env.JWTSECRET || 'jwtsecret',
+  sentryDsn: process.env.SENTRY_DSN,
 };
 
 module.exports = config;
