@@ -19,7 +19,8 @@
 - [x] Users Feed
 - [x] Add Comments
 - [x] Delete Comments
-- [ ] Get Comments
+- [x] Get Comments
+- [x] Followers/Following
 - [ ] Like/Unlike Photo
 - [ ] Add hashtags
 - [ ] Show hashtags
