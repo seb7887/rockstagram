@@ -9,6 +9,7 @@ const authController = require('../controllers/auth');
 const userController = require('../controllers/user');
 const postController = require('../controllers/post');
 const commentController = require('../controllers/comment');
+const likeController = require('../controllers/like');
 const followController = require('../controllers/follow');
 const feedController = require('../controllers/feed');
 
@@ -83,6 +84,20 @@ router.delete(
   '/comments/:id',
   passport.authenticate('jwt', { session: false }),
   commentController.deleteComment,
+);
+
+/**
+ * @name like-routes
+ */
+router.post(
+  '/like',
+  passport.authenticate('jwt', { session: false }),
+  likeController.likePost,
+);
+router.delete(
+  '/like',
+  passport.authenticate('jwt', { session: false }),
+  likeController.unlikePost,
 );
 
 /**
