@@ -36,6 +36,7 @@ const photo = {
 
 describe('/posts', () => {
   beforeEach(async () => {
+    await db().sequelize.sync();
     await clearDB();
   });
 

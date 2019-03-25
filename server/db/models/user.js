@@ -1,30 +1,36 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
-    name: {
-      type: DataTypes.STRING,
-      unique: true,
-      allowNull: false,
+  const User = sequelize.define(
+    'User',
+    {
+      name: {
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.TEXT,
+        unique: true,
+        allowNull: false,
+      },
+      bio: {
+        type: DataTypes.STRING,
+      },
+      profilePic: {
+        type: DataTypes.STRING,
+      },
+      following: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      followers: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
     },
-    email: {
-      type: DataTypes.TEXT,
-      unique: true,
-      allowNull: false,
+    {
+      freezeTableName: true,
     },
-    bio: {
-      type: DataTypes.STRING,
-    },
-    profilePic: {
-      type: DataTypes.STRING,
-    },
-    following: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    followers: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-  });
+  );
 
   User.associate = models => {
     User.hasOne(models.Login, {

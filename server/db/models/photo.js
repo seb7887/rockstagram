@@ -1,21 +1,27 @@
 module.exports = (sequelize, DataTypes) => {
-  const Photo = sequelize.define('Photo', {
-    imageUrl: {
-      type: DataTypes.STRING,
-      allowNull: false,
+  const Photo = sequelize.define(
+    'Photo',
+    {
+      imageUrl: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      caption: {
+        type: DataTypes.STRING,
+      },
+      likes: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      comments: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
     },
-    caption: {
-      type: DataTypes.STRING,
+    {
+      freezeTableName: true,
     },
-    likes: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    comments: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-  });
+  );
 
   Photo.associate = models => {
     Photo.hasMany(models.Comment);

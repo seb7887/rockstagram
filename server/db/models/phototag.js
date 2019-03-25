@@ -1,5 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
-  const PhotoTag = sequelize.define('PhotoTag', {});
+  const PhotoTag = sequelize.define(
+    'PhotoTag',
+    {},
+    {
+      freezeTableName: true,
+    },
+  );
 
   PhotoTag.associate = models => {
     PhotoTag.belongsTo(models.User);

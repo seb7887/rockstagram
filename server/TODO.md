@@ -31,4 +31,4 @@
 - [x] Security
 - [ ] Documentation
 - [x] Traceslash
-- [ ] Refactoring Model Methods
+- [x] Refactoring Model Methods

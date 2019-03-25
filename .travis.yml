@@ -1,19 +1,17 @@
 language: node_js
 node_js:
   - 'lts/*'
+
+services:
+  - postgresql
+
 cache:
   directories:
     - ~/.npm
     - ~/.cache
-notifications:
-  email: false
-install: echo "Installing"
-jobs:
-  include:
-    - stage: test
-      script: npm install && cd server && npm install && cd .. && npm run test
-      on:
-        branch: develop
-stages:
-  - name: test
-    if: (branch = develop)
+
+before_install:
+  - psql -c 'create database rockstagramdev;' -U postgres
+
+script:
+  - npm install && cd server && npm install && cd .. && npm test
