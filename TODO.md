@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] API
+- [x] API
 - [x] Coverage API jest.config.js
 - [ ] Cloudinary
 - [ ] Travis deploy
@@ -13,3 +13,4 @@
 - [ ] Animations (React Spring?)
 - [ ] Redux Saga
 - [ ] Lambda Test
+- [ ] Scripts for dependencies installation
