@@ -1,9 +1,11 @@
 /* eslint-env jest */
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { render, fireEvent } from 'react-testing-library';
 
 import Photo from '../Photo';
+import theme from '../../shared/theme';
 
 const comments = {
   test: [
@@ -34,7 +36,9 @@ describe('<Photo/>', () => {
   it('renders and matches snapshot', () => {
     const { asFragment } = render(
       <Router>
-        <Photo key={8} {...mockedProps} />
+        <ThemeProvider theme={theme}>
+          <Photo key={8} {...mockedProps} />
+        </ThemeProvider>
       </Router>,
     );
 
@@ -44,7 +48,9 @@ describe('<Photo/>', () => {
   it('displays a photo correctly', () => {
     const { getByTestId } = render(
       <Router>
-        <Photo key={8} {...mockedProps} />
+        <ThemeProvider theme={theme}>
+          <Photo key={8} {...mockedProps} />
+        </ThemeProvider>
       </Router>,
     );
 
@@ -55,7 +61,9 @@ describe('<Photo/>', () => {
   it('increments likes', () => {
     const { getByTestId } = render(
       <Router>
-        <Photo key={8} {...mockedProps} />
+        <ThemeProvider theme={theme}>
+          <Photo key={8} {...mockedProps} />
+        </ThemeProvider>
       </Router>,
     );
 

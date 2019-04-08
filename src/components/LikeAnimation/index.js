@@ -32,7 +32,7 @@ const Likes = styled.span`
   font-size: 2rem;
   padding: 1rem;
   position: absolute;
-  color: var(--black);
+  color: ${props => props.theme.colors.black};
   left: 50%;
   top: 50%;
   pointer-events: none;

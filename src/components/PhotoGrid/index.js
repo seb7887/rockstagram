@@ -1,7 +1,7 @@
 import React from 'react';
-import { Grid } from './styles/PhotoGridStyles';
+import { Grid } from './style';
 
-import Photo from './Photo';
+import Photo from '../Photo';
 
 class PhotoGrid extends React.Component {
   render() {

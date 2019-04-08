@@ -1,8 +1,10 @@
 /* eslint-env jest */
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
 import { render, fireEvent } from 'react-testing-library';
 
 import Comments from '../Comments';
+import theme from '../../shared/theme';
 
 let comments = {
   test: [
@@ -29,19 +31,31 @@ let mockedProps = {
 
 describe('<Comments/>', () => {
   it('renders and matches snapshot', () => {
-    const { asFragment } = render(<Comments {...mockedProps} />);
+    const { asFragment } = render(
+      <ThemeProvider theme={theme}>
+        <Comments {...mockedProps} />
+      </ThemeProvider>,
+    );
 
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('displays comments correctly', () => {
-    const { getByTestId } = render(<Comments {...mockedProps} />);
+    const { getByTestId } = render(
+      <ThemeProvider theme={theme}>
+        <Comments {...mockedProps} />
+      </ThemeProvider>,
+    );
 
     expect(getByTestId('comment').textContent).toContain('This is a test');
   });
 
   it('adds a new comment', () => {
-    const { getByTestId } = render(<Comments {...mockedProps} />);
+    const { getByTestId } = render(
+      <ThemeProvider theme={theme}>
+        <Comments {...mockedProps} />
+      </ThemeProvider>,
+    );
 
     fireEvent.change(getByTestId('author'), { target: { value: 'test' } });
     fireEvent.change(getByTestId('text'), { target: { value: 'hey!' } });
@@ -52,7 +66,11 @@ describe('<Comments/>', () => {
   });
 
   it('removes a comment', () => {
-    const { getByTestId } = render(<Comments {...mockedProps} />);
+    const { getByTestId } = render(
+      <ThemeProvider theme={theme}>
+        <Comments {...mockedProps} />
+      </ThemeProvider>,
+    );
 
     fireEvent.click(getByTestId('remove-comment'));
 

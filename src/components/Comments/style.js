@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Comment = styled.div`
-  border-bottom: 1px solid var(--lightgrey);
+  border-bottom: 1px solid ${props => props.theme.colors.lightgrey};
   padding: 0.5rem 0;
 
   p {
@@ -9,7 +9,7 @@ export const Comment = styled.div`
     margin: 0;
 
     strong {
-      color: var(--black);
+      color: ${props => props.theme.colors.black};
       margin-right: 5px;
     }
 
@@ -20,7 +20,7 @@ export const Comment = styled.div`
       opacity: 0;
 
       &:hover {
-        color: red;
+        color: ${props => props.theme.colors.red};
         opacity: 1;
       }
     }
@@ -38,7 +38,7 @@ export const CommentGrid = styled.div`
       border: 0;
       font-size: 1.3rem;
       padding: 1rem 0;
-      border-bottom: 1px solid var(--lightgrey);
+      border-bottom: 1px ${props => props.theme.colors.lightgrey};
       outline: none;
       resize: vertical;
     }

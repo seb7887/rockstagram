@@ -6,7 +6,7 @@ export const Figure = styled.figure`
   flex-shrink: 0;
   margin: 0 2rem 2rem 2rem;
   padding: 2rem;
-  border: 1px solid var(--lightgrey);
+  border: 1px solid ${props => props.theme.colors.lightgrey};
   background: white;
   box-shadow: 0 0 0 3.5px rgba(0, 0, 0, 0.01);
   position: relative;
@@ -38,13 +38,13 @@ export const Figure = styled.figure`
     padding: 1rem 4rem;
     text-align: center;
     font-size: 2.5rem;
-    color: var(--black);
+    color: ${props => props.theme.colors.black};
     transition: all 0.2s;
     box-sizing: padding-box;
 
 
     &:hover, &:focus {
-      border-color: var(--black);
+      border-color: ${props => props.theme.colors.black};
       opacity: 0.8;
       outline: 0;
     }
@@ -60,7 +60,7 @@ export const Figure = styled.figure`
     transition: all 0.2s;
 
     &:hover, &:focus {
-      border-color: var(--black);
+      border-color: ${props => props.theme.colors.black};
       opacity: 0.8;
       outline: 0;
     }
@@ -77,7 +77,7 @@ export const Figure = styled.figure`
   .speech-bubble {
     width: 1.25rem * 1.2
     height: 1.25rem;
-    background: var(--black);
+    background: ${props => props.theme.colors.black};
     display: inline-block;
     border-radius: 50%;
     position: relative;

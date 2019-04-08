@@ -1,8 +1,8 @@
 import React from 'react';
-import { SinglePhoto } from './styles/SingleStyle';
+import { SinglePhoto } from './style';
 
-import Photo from './Photo';
-import Comments from './Comments';
+import Photo from '../Photo';
+import Comments from '../Comments';
 
 const Single = props => {
   const i = props.posts.findIndex(

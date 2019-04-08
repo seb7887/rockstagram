@@ -1,12 +1,12 @@
 import React from 'react';
-import { Comment, CommentGrid } from './styles/CommentStyles';
+import { Comment, CommentGrid } from './style';
 
 class Comments extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       author: '',
-      comment: ''
+      comment: '',
     };
   }
 
@@ -35,7 +35,7 @@ class Comments extends React.Component {
   handleChange = e => {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
-  }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
@@ -47,7 +47,7 @@ class Comments extends React.Component {
     this.clearForm();
     this.setState({
       author: '',
-      comment: ''
+      comment: '',
     });
   };
 

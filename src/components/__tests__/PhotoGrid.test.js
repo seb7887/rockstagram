@@ -1,9 +1,11 @@
 /* eslint-env jest */
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { render } from 'react-testing-library';
 
 import PhotoGrid from '../PhotoGrid';
+import theme from '../../shared/theme';
 
 const comments = {
   test: [
@@ -36,7 +38,9 @@ describe('<PhotoGrid/>', () => {
   it('renders and matches snapshot', () => {
     const { asFragment } = render(
       <Router>
-        <PhotoGrid {...mockedProps} />
+        <ThemeProvider theme={theme}>
+          <PhotoGrid {...mockedProps} />
+        </ThemeProvider>
       </Router>,
     );
 

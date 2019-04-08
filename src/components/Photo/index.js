@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Figure } from './styles/PhotoStyles';
+import { Figure } from './style';
 
-import LikeAnimation from './LikeAnimation';
+import LikeAnimation from '../LikeAnimation';
 
 const Photo = ({ post, i, comments, incrementLikes }) => (
   <Figure>

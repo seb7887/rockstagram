@@ -3,7 +3,7 @@
 exports[`<Main/> renders and matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="HeaderStyles__Container-sc-18ybl58-0 brYbQH"
+    class="style__Container-sc-18j08ow-0 jQaYkR"
   >
     <h1>
       <a

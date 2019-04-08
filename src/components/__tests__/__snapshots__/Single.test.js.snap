@@ -3,10 +3,10 @@
 exports[`<Single/> renders and matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="SingleStyle__SinglePhoto-eqv6z9-0 IUWAb"
+    class="style__SinglePhoto-nsdyyb-0 gUoAhO"
   >
     <figure
-      class="PhotoStyles__Figure-sc-1aj8yko-0 cuFNbv"
+      class="style__Figure-cjo9le-0 kWuZVR"
     >
       <div
         class="grid-photo-wrap"
@@ -21,11 +21,11 @@ exports[`<Single/> renders and matches snapshot 1`] = `
           />
         </a>
         <div
-          class="LikeAnimation__Animation-qbj4g3-0 cogcnK"
+          class="LikeAnimation__Animation-sc-1q1izn2-0 fqDDFP"
         >
           <div>
             <span
-              class="like LikeAnimation__Likes-qbj4g3-1 cgrPDV"
+              class="like LikeAnimation__Likes-sc-1q1izn2-1 kCBfRn"
             >
               7
             </span>
@@ -68,10 +68,10 @@ exports[`<Single/> renders and matches snapshot 1`] = `
       </figcaption>
     </figure>
     <div
-      class="CommentStyles__CommentGrid-qqfm26-1 gNQaPS"
+      class="style__CommentGrid-sc-10wf6c9-1 uoWPB"
     >
       <div
-        class="CommentStyles__Comment-qqfm26-0 bcqYLs"
+        class="style__Comment-sc-10wf6c9-0 fgtolA"
         data-testid="comment"
       >
         <p>

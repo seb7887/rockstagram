@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   h1 {
-    font-family: billabong, 'billabongregular';
+    font-family: ${props => props.theme.fonts.header};
     text-align: center;
     font-weight: 100;
     font-size: 13rem;
@@ -11,7 +11,7 @@ export const Container = styled.div`
     text-shadow: 0px 2px 0 rgba(0, 0, 0, 0.11);
 
     a {
-      color: var(--black);
+      color: ${props => props.theme.colors.black};
       text-decoration: none;
       transition: all 0.3s;
 

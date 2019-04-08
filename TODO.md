@@ -2,6 +2,7 @@
 
 - [x] API
 - [x] Coverage API jest.config.js
+- [ ] Project structure
 - [ ] Cloudinary
 - [ ] Travis deploy
 - [ ] Cypress

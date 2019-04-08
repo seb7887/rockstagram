@@ -3,7 +3,7 @@
 exports[`<Photo/> renders and matches snapshot 1`] = `
 <DocumentFragment>
   <figure
-    class="PhotoStyles__Figure-sc-1aj8yko-0 cuFNbv"
+    class="style__Figure-cjo9le-0 kWuZVR"
   >
     <div
       class="grid-photo-wrap"
@@ -18,11 +18,11 @@ exports[`<Photo/> renders and matches snapshot 1`] = `
         />
       </a>
       <div
-        class="LikeAnimation__Animation-qbj4g3-0 cogcnK"
+        class="LikeAnimation__Animation-sc-1q1izn2-0 fqDDFP"
       >
         <div>
           <span
-            class="like LikeAnimation__Likes-qbj4g3-1 cgrPDV"
+            class="like LikeAnimation__Likes-sc-1q1izn2-1 kCBfRn"
           >
             7
           </span>

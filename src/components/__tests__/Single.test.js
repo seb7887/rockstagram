@@ -1,9 +1,11 @@
 /* eslint-env jest */
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { render } from 'react-testing-library';
 
 import Single from '../Single';
+import theme from '../../shared/theme';
 
 const removeComment = jest.fn();
 const addComment = jest.fn();
@@ -45,7 +47,9 @@ describe('<Single/>', () => {
   it('renders and matches snapshot', () => {
     const { asFragment } = render(
       <Router>
-        <Single {...mockedProps} />
+        <ThemeProvider theme={theme}>
+          <Single {...mockedProps} />
+        </ThemeProvider>
       </Router>,
     );
 
