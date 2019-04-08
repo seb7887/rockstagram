@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import { config } from './config';
 import App from './containers/App';
 import store from './store';
-import './index.css';
 
 const router = (
   <Provider store={store}>

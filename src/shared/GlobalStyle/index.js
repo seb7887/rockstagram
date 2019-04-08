@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: ${props => props.theme.fonts.p}, sans-serif;
     font-size: 10px;
     color: ${theme.black};
   }
@@ -32,6 +32,12 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-size: 1.6rem;
     line-height: 1.5;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    color: ${props => props.theme.colors.blue};
   }
 `;
 
