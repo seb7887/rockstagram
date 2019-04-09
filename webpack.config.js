@@ -12,7 +12,7 @@ module.exports = ({ mode }) => {
     {
       mode,
       devtool: 'source-map',
-      entry: ['./src/index.js'],
+      entry: ['@babel/polyfill/noConflict', './src/index.js'],
       output: {
         path: path.join(__dirname, './dist'),
         filename: 'bundle.js',

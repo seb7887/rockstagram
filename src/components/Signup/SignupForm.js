@@ -1,6 +1,32 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
 import * as Yup from 'yup';
+import { registerUser } from '../../store/actions/auth';
+
+import { Button, Text } from '../common';
+import Error from '../Error';
+import Message from '../Message';
+
+export const StyledForm = styled(Form)`
+  width: 300px;
+  height: 300px;
+  margin: 0 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const StyledField = styled(Field)`
+  width: 300px;
+  height: 4rem;
+  padding: 0 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+`;
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -17,40 +43,65 @@ const SignupSchema = Yup.object().shape({
 });
 
 class SignupForm extends React.Component {
+  handleSubmit = values => {
+    const user = {
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    };
+    this.props.registerUser(user);
+  };
+
   render() {
+    const { isPending, message, error, user } = this.props.signup;
+
     return (
-      <Formik
-        initialValues={{ name: '', email: '', password: '' }}
-        validationSchema={SignupSchema}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+      <>
+        <Formik
+          initialValues={{ name: '', email: '', password: '' }}
+          validationSchema={SignupSchema}
+          onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(false);
-          }, 400);
-        }}
-      >
-        {({ isSubmitting, errors, touched }) => (
-          <Form>
-            <Field type='text' name='name' placeholder='Your name' />
-            {errors.name && touched.name ? <div>{errors.name}</div> : null}
-            <Field type='email' name='email' placeholder='Your email' />
-            {errors.email && touched.email ? <div>{errors.email}</div> : null}
-            <Field
-              type='password'
-              name='password'
-              placeholder='Your password'
-            />
-            {errors.password && touched.password ? (
-              <div>{errors.password}</div>
-            ) : null}
-            <button type='submit' disabled={isSubmitting}>
-              Sign up
-            </button>
-          </Form>
-        )}
-      </Formik>
+            this.handleSubmit(values);
+            resetForm();
+          }}
+        >
+          {({ isSubmitting, errors, touched }) => (
+            <StyledForm>
+              <StyledField type='text' name='name' placeholder='Your name' />
+              {errors.name && touched.name ? <Text>{errors.name}</Text> : null}
+              <StyledField type='email' name='email' placeholder='Your email' />
+              {errors.email && touched.email ? (
+                <Text>{errors.email}</Text>
+              ) : null}
+              <StyledField
+                type='password'
+                name='password'
+                placeholder='Your password'
+              />
+              {errors.password && touched.password ? (
+                <Text>{errors.password}</Text>
+              ) : null}
+              <Button type='submit' disabled={isSubmitting}>
+                Sign up
+              </Button>
+            </StyledForm>
+          )}
+        </Formik>
+
+        {!isPending && error && <Error error={error} />}
+
+        {!isPending && message && <Message message={message} />}
+      </>
     );
   }
 }
 
-export default SignupForm;
+const mapStateToProps = response => ({
+  signup: response.registerUser,
+});
+
+export default connect(
+  mapStateToProps,
+  { registerUser },
+)(SignupForm);

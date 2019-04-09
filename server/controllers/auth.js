@@ -25,7 +25,7 @@ exports.signin = (req, res, next) => {
       // 1000ms, 60s, 60min, 24hours, 31days = 1 month
       maxAge: 1000 * 60 * 60 * 24 * 31,
     });
-    return res.status(200).json({ userId: user.id });
+    return res.status(200).json(user);
   })(req, res);
 };
 

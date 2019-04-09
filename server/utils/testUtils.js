@@ -17,9 +17,9 @@ const registerUser = async user => {
     .join(';');
 
   expect(cookie).toContain('token');
-  expect(res.body).toHaveProperty('userId');
+  expect(res.body).toHaveProperty('id');
 
-  const id = res.body.userId;
+  const id = res.body.id;
   const token = cookie.split(';')[0].split('=')[1];
 
   return { id, token };

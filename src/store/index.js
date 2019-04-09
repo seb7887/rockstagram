@@ -1,5 +1,12 @@
-import { createStore, compose } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 
+import { createLogger } from 'redux-logger';
+import { Iterable } from 'immutable';
+
+import createSagaMiddleware from 'redux-saga';
+import { initSagas } from './initSagas';
+
+import { getQuery } from '../utility/getQuery';
 import rootReducer from './reducers';
 
 // Fake data
@@ -11,10 +18,31 @@ const defaultState = {
   comments,
 };
 
-const enhacers = compose(
-  window.devToolsExtension ? window.devToolsExtension() : f => f,
-);
+const stateTransformer = state => {
+  return Iterable.isIterable(state) ? state.toJS() : state;
+};
 
-const store = createStore(rootReducer, defaultState, enhacers);
+const logger = createLogger({
+  stateTransformer,
+});
 
-export default store;
+const configureStore = () => {
+  const sagaMiddleware = createSagaMiddleware();
+  const middlewares = [sagaMiddleware];
+
+  if (getQuery()['logger']) {
+    middlewares.push(logger);
+  }
+
+  const devTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE_
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE_
+    : f => f;
+  const composables = [applyMiddleware(...middlewares), devTools];
+  const enhancer = compose(...composables);
+
+  const store = createStore(rootReducer, defaultState, enhancer);
+  initSagas(sagaMiddleware);
+  return store;
+};
+
+export default configureStore;

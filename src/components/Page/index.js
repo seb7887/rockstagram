@@ -4,7 +4,7 @@ import PhotoGrid from '../PhotoGrid';
 import Signup from '../Signup';
 
 const Page = props => {
-  if (!props.currentUser) {
+  if (!props.currentUser.isAuthenticated) {
     return <Signup />;
   } else {
     return (

@@ -95,7 +95,7 @@ describe('/signin', () => {
         .join(';');
 
       expect(cookie).toContain('token');
-      expect(res.body).toHaveProperty('userId');
+      expect(res.body).toHaveProperty('id');
     });
   });
 
