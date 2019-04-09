@@ -1,16 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import SignupForm from './SignupForm';
 import mobile from '../../images/mobile.svg';
 
-import { Container } from './style';
+import { Container, Subtitle, Image } from './style';
+import { Div, Block, Title } from '../common';
 
 const Signup = () => (
   <Container>
-    <img src={mobile} alt='mobile' />
-    <h1>Rockstagram</h1>
-    <h2>Sign up to see your friend's photos and videos</h2>
-    <SignupForm />
-    <p>Have an account? Login</p>
+    <Image src={mobile} alt='mobile' />
+    <Div>
+      <Block>
+        <Title>Rockstagram</Title>
+        <Subtitle>Sign up to see your friend's photos and videos</Subtitle>
+        <SignupForm />
+      </Block>
+      <Block>
+        <p>
+          Have an account? <Link to='/login'>Login</Link>
+        </p>
+      </Block>
+    </Div>
   </Container>
 );
 
