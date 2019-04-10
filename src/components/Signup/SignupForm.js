@@ -98,6 +98,7 @@ class SignupForm extends React.Component {
 }
 
 const mapStateToProps = response => ({
+<<<<<<< HEAD
   signup: response.registerUser,
 });
 
@@ -105,3 +106,9 @@ export default connect(
   mapStateToProps,
   { registerUser },
 )(SignupForm);
+=======
+  response,
+});
+
+export default connect(mapStateToProps)(SignupForm);
+>>>>>>> 7035b4156592a6bb297f0283b0d1bc6cdc8d0b5a
