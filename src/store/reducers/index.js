@@ -3,13 +3,13 @@ import { combineReducers } from 'redux';
 import { comments } from './comments';
 import { posts } from './posts';
 import { registerUser } from './registerUser';
-import { currentUser } from './currentUser';
+import { loginUser } from './loginUser';
 
 const rootReducer = combineReducers({
   comments,
   posts,
   registerUser,
-  currentUser,
+  loginUser,
 });
 
 export default rootReducer;

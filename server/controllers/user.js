@@ -26,7 +26,7 @@ exports.signup = async (req, res, next) => {
     const user = await User.create({ name, email });
     // Hash password and store it in Login model
     const login = await generateLogin(email, password);
-    return next();
+    return res.status(200).json(user);
   } catch (err) {
     next(err);
   }

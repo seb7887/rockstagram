@@ -1,6 +1,7 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { Formik, Form, Field } from 'formik';
 import styled from 'styled-components';
 import * as Yup from 'yup';
 import { registerUser } from '../../store/actions/auth';
@@ -43,6 +44,11 @@ const SignupSchema = Yup.object().shape({
 });
 
 class SignupForm extends React.Component {
+  state = {
+    redirect: false,
+    message: false,
+  };
+
   handleSubmit = values => {
     const user = {
       name: values.name,
@@ -50,13 +56,25 @@ class SignupForm extends React.Component {
       password: values.password,
     };
     this.props.registerUser(user);
+    this.setState({ message: true });
+    // Redirect after 3 seconds
+    setTimeout(() => {
+      this.setState({
+        redirect: true,
+        message: false,
+      });
+    }, 3000);
   };
 
   render() {
-    const { isPending, message, error, user } = this.props.signup;
+    const { redirect, message } = this.state;
+    const { isPending, success, error, user } = this.props.signup;
 
     return (
       <>
+        {/* Redirect if register is successfull */}
+        {redirect && success && <Redirect to='/login' />}
+
         <Formik
           initialValues={{ name: '', email: '', password: '' }}
           validationSchema={SignupSchema}
@@ -83,7 +101,7 @@ class SignupForm extends React.Component {
                 <Text>{errors.password}</Text>
               ) : null}
               <Button type='submit' disabled={isSubmitting}>
-                Sign up
+                Sign{isPending && 'ing'} up
               </Button>
             </StyledForm>
           )}
@@ -91,14 +109,16 @@ class SignupForm extends React.Component {
 
         {!isPending && error && <Error error={error} />}
 
-        {!isPending && message && <Message message={message} />}
+        {!isPending && message && !error && (
+          <Message>Welcome {user.name}! Redirecting to sign in ...</Message>
+        )}
       </>
     );
   }
 }
 
-const mapStateToProps = response => ({
-  signup: response.registerUser,
+const mapStateToProps = state => ({
+  signup: state.registerUser,
 });
 
 export default connect(

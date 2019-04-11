@@ -3,6 +3,8 @@ const router = express.Router();
 const passport = require('passport');
 const ExpressBrute = require('express-brute');
 
+const dev = process.env.NODE_ENV !== 'production';
+
 /**
  * @name controllers
  */
@@ -28,18 +30,18 @@ const bruteforce = new ExpressBrute(store);
 /**
  * @name auth-routes
  */
-router.post('/signin', bruteforce.prevent, authController.signin);
+if (!dev) {
+  router.post('/signin', bruteforce.prevent, authController.signin);
+} else {
+  router.post('/signin', authController.signin);
+}
+
 router.post('/signout', authController.signout);
 
 /**
  * @name users-routes
  */
-router.post(
-  '/users',
-  validation.validateRegister,
-  userController.signup,
-  authController.signin,
-);
+router.post('/users', validation.validateRegister, userController.signup);
 
 router.get('/users/:id', userController.getUser);
 router.put(

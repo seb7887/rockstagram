@@ -98,12 +98,6 @@ describe('/users', () => {
         .send(user)
         .expect(200);
 
-      const cookie = res.headers['set-cookie'][0]
-        .split(';')
-        .map(item => item.split(';')[0])
-        .join(';');
-
-      expect(cookie).toContain('token');
       expect(res.body).toHaveProperty('id');
     });
   });

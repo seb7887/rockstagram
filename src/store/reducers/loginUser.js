@@ -1,40 +1,40 @@
 import {
-  REGISTER_USER,
-  REGISTER_USER_SUCCESS,
-  REGISTER_USER_ERROR,
+  LOGIN_USER,
+  LOGIN_USER_SUCCESS,
+  LOGIN_USER_ERROR,
 } from '../actionTypes';
 
 const initialState = {
   isPending: false,
   success: false,
+  isAuthenticated: false,
+  currentUser: {},
   error: null,
-  user: {},
 };
 
-export const registerUser = (state = initialState, action) => {
+export const loginUser = (state = initialState, action) => {
   const response = action.response;
+  console.log(action.type);
 
   switch (action.type) {
-    case REGISTER_USER:
+    case LOGIN_USER:
       return {
         isPending: true,
-        success: false,
-        error: null,
-        user: {},
+        ...state,
       };
-    case REGISTER_USER_SUCCESS:
+    case LOGIN_USER_SUCCESS:
       return {
         isPending: false,
         success: true,
-        error: null,
-        user: response,
+        isAuthenticated: true,
+        currentUser: response,
       };
-    case REGISTER_USER_ERROR:
+    case LOGIN_USER_ERROR:
       return {
         isPending: false,
         success: false,
         error: response,
-        user: {},
+        ...state,
       };
     default:
       return state;

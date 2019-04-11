@@ -81,6 +81,7 @@
     "@babel/polyfill": "^7.4.3",
     "formik": "^1.5.2",
     "immutable": "^4.0.0-rc.12",
+    "js-cookie": "^2.2.0",
     "query-string": "^6.4.2",
     "raven-js": "^3.27.0",
     "react": "^16.8.2",

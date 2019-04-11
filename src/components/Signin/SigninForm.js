@@ -1,9 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import styled from 'styled-components';
-import * as Yup from 'yup';
+import { loginUser } from '../../store/actions/auth';
 
 import { Button } from '../common';
+import Error from '../Error';
+import Message from '../Message';
 
 export const StyledForm = styled(Form)`
   width: 300px;
@@ -25,33 +29,72 @@ export const StyledField = styled(Field)`
 `;
 
 class SigninForm extends React.Component {
+  state = {
+    redirect: false,
+    message: false,
+  };
+
+  handleSubmit = values => {
+    const user = {
+      email: values.email,
+      password: values.password,
+    };
+    this.props.loginUser(user);
+    this.setState({ message: true });
+    // Redirect after 3 seconds
+    setTimeout(() => {
+      this.setState({
+        redirect: true,
+        message: false,
+      });
+    }, 3000);
+  };
+
   render() {
+    const { redirect, message } = this.state;
+    const { isPending, success, error, user } = this.props.login;
+
     return (
-      <Formik
-        initialValues={{ email: '', password: '' }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+      <>
+        {/* Redirect if register is successfull */}
+        {redirect && success && <Redirect to='/' />}
+
+        <Formik
+          initialValues={{ email: '', password: '' }}
+          onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(false);
-          }, 400);
-        }}
-      >
-        {({ isSubmitting }) => (
-          <StyledForm>
-            <StyledField type='email' name='email' placeholder='Your email' />
-            <StyledField
-              type='password'
-              name='password'
-              placeholder='Your password'
-            />
-            <Button type='submit' disabled={isSubmitting}>
-              Sign in
-            </Button>
-          </StyledForm>
-        )}
-      </Formik>
+            this.handleSubmit(values);
+            resetForm();
+          }}
+        >
+          {({ isSubmitting }) => (
+            <StyledForm>
+              <StyledField type='email' name='email' placeholder='Your email' />
+              <StyledField
+                type='password'
+                name='password'
+                placeholder='Your password'
+              />
+              <Button type='submit' disabled={isSubmitting}>
+                Sign{isPending && 'ing'} in
+              </Button>
+            </StyledForm>
+          )}
+        </Formik>
+
+        {!isPending && error && <Error error={error} />}
+
+        {!isPending && message && !error && <Message>Welcome Back!</Message>}
+      </>
     );
   }
 }
 
-export default SigninForm;
+const mapStateToProps = state => ({
+  login: state.loginUser,
+});
+
+export default connect(
+  mapStateToProps,
+  { loginUser },
+)(SigninForm);

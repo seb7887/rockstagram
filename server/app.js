@@ -13,6 +13,7 @@ const errorHandler = require('./handlers/error');
 require('./handlers/passport');
 
 const dev = process.env.NODE_ENV !== 'production';
+const { clientUrl } = require('./config');
 
 /**
  * @name middleware-functions
@@ -25,7 +26,7 @@ if (!dev) {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(validator());
-app.use(cors());
+app.use(cors({ credentials: true, origin: process.env.CLIENT || clientUrl }));
 app.use(helmet());
 app.use(morgan('combined', { stream: logger.stream }));
 
