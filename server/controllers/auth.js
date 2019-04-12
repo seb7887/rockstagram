@@ -29,6 +29,10 @@ exports.signin = (req, res, next) => {
   })(req, res);
 };
 
+exports.checkToken = (req, res) => {
+  res.status(200).json({});
+};
+
 exports.signout = (req, res, next) => {
   res.clearCookie('token');
   res.status(200).json({ message: 'Goodbye!' });

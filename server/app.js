@@ -4,6 +4,7 @@ const compression = require('compression');
 const cors = require('cors');
 const morgan = require('morgan');
 const validator = require('express-validator');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const logger = require('./logger');
@@ -25,6 +26,7 @@ if (!dev) {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(validator());
 app.use(cors({ credentials: true, origin: process.env.CLIENT || clientUrl }));
 app.use(helmet());

@@ -20,6 +20,7 @@ const feedController = require('../controllers/feed');
  * @name middleware
  */
 const validation = require('../middleware/validation');
+const withAuth = require('../middleware/withAuth');
 
 /**
  * @name brute-force-protection
@@ -35,7 +36,7 @@ if (!dev) {
 } else {
   router.post('/signin', authController.signin);
 }
-
+router.post('/auth', withAuth, authController.checkToken);
 router.post('/signout', authController.signout);
 
 /**

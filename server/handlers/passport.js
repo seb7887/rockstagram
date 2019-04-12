@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const LocalStrategy = require('passport-local');
 const JWTStrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
+const JWTCookieComboStrategy = require('passport-jwt-cookiecombo');
 
 const { jwtSecret } = require('../config');
 
@@ -52,7 +53,7 @@ passport.use(
 
 const jwtOpts = {
   secretOrKey: jwtSecret,
-  jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+  jwtFromRequest: ExtractJWT.fromHeader('Authorization'),
 };
 
 passport.use(
@@ -63,6 +64,33 @@ passport.use(
 
       // Check if the token has expired
       if (Date.now() < token.expires) {
+        throw new Error('Token expired');
+      }
+
+      // Everything is OK
+      return done(null, user);
+    } catch (err) {
+      return done(err);
+    }
+  }),
+);
+
+/**
+ * @name jwt-cookie-strategy
+ */
+const jwtCookieOpts = {
+  secretOrPublicKey: jwtSecret,
+};
+
+passport.use(
+  'jwt-cookiecombo',
+  new JWTCookieComboStrategy(jwtCookieOpts, async (payload, done) => {
+    console.log('payload', payload);
+    try {
+      const user = await User.findOne({ where: { id: payload.id } });
+
+      // Check if the token has expired
+      if (Date.now() < payload.expires) {
         throw new Error('Token expired');
       }
 

@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER, REGISTER_USER, LOGIN_USER } from '../actionTypes';
+import { REGISTER_USER, LOGIN_USER, AUTH_USER } from '../actionTypes';
 
 export const registerUser = user => {
   return {
@@ -10,6 +10,13 @@ export const registerUser = user => {
 export const loginUser = user => {
   return {
     type: LOGIN_USER,
+    user,
+  };
+};
+
+export const authUser = user => {
+  return {
+    type: AUTH_USER,
     user,
   };
 };

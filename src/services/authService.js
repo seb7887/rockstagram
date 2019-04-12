@@ -1,14 +1,10 @@
 import { config } from '../config';
 
-export const loginService = req => {
-  const endpoint = `${config.apiEndpoint}/signin`;
+export const authService = () => {
+  const endpoint = `${config.apiEndpoint}/auth`;
   const opts = {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
     credentials: 'include',
-    body: JSON.stringify(req.user),
   };
 
   return fetch(endpoint, opts)

@@ -14,7 +14,6 @@ const initialState = {
 
 export const loginUser = (state = initialState, action) => {
   const response = action.response;
-  console.log(action.type);
 
   switch (action.type) {
     case LOGIN_USER:

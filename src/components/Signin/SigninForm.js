@@ -52,7 +52,7 @@ class SigninForm extends React.Component {
 
   render() {
     const { redirect, message } = this.state;
-    const { isPending, success, error, user } = this.props.login;
+    const { isPending, success, error } = this.props.login;
 
     return (
       <>
