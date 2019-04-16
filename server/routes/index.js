@@ -36,7 +36,7 @@ if (!dev) {
 } else {
   router.post('/signin', authController.signin);
 }
-router.post('/auth', withAuth, authController.checkToken);
+router.get('/auth', withAuth, authController.checkToken);
 router.post('/signout', authController.signout);
 
 /**

@@ -6,11 +6,12 @@ const initialState = {
 };
 
 export const authUser = (state = initialState, action) => {
+  console.log(action.type);
   switch (action.type) {
     case AUTH_USER:
       return {
         loading: true,
-        redirect: true,
+        redirect: false,
       };
     case AUTH_USER_SUCCESS:
       return {

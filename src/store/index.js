@@ -1,12 +1,12 @@
 import { createStore, compose, applyMiddleware } from 'redux';
-
 import { createLogger } from 'redux-logger';
 import { Iterable } from 'immutable';
+import { routerMiddleware } from 'connected-react-router/immutable';
 
 import createSagaMiddleware from 'redux-saga';
 import { initSagas } from './initSagas';
 
-import { getQuery } from '../utility/getQuery';
+import { getQuery } from '../utils/getQuery';
 import rootReducer from './reducers';
 
 // Fake data
@@ -26,9 +26,9 @@ const logger = createLogger({
   stateTransformer,
 });
 
-const configureStore = () => {
+const configureStore = history => {
   const sagaMiddleware = createSagaMiddleware();
-  const middlewares = [sagaMiddleware];
+  const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
   if (getQuery()['logger']) {
     middlewares.push(logger);

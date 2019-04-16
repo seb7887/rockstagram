@@ -6,12 +6,17 @@ const db = require('../db');
 const User = db().User;
 
 const withAuth = async (req, res, next) => {
-  console.log('payload', req.cookies);
-  const { token } = req.cookies;
-
-  const { id } = jwt.verify(token, jwtSecret);
-  console.log('id', id);
   try {
+    const { token } = req.cookies;
+    console.log('TOKEN', token);
+
+    if (!token) {
+      throw new Error('Unauthorized');
+    }
+
+    const { id } = jwt.verify(token, jwtSecret);
+    console.log('id', id);
+
     const user = await User.findOne({ where: { id } });
 
     req.user = user;

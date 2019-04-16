@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { postsSelector } from '../../store/selectors';
+
 import { Grid } from './style';
 
 import Photo from '../Photo';
@@ -16,4 +19,11 @@ class PhotoGrid extends React.Component {
   }
 }
 
-export default PhotoGrid;
+const mapStateToProps = state => {
+  const posts = postsSelector(state);
+  return {
+    posts,
+  };
+};
+
+export default connect(mapStateToProps)(PhotoGrid);

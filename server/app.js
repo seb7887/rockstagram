@@ -28,7 +28,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(validator());
-app.use(cors({ credentials: true, origin: process.env.CLIENT || clientUrl }));
+
+const corstOptions = {
+  credentials: true,
+  origin: process.env.CLIENT || clientUrl,
+};
+
+app.use(cors(corstOptions));
 app.use(helmet());
 app.use(morgan('combined', { stream: logger.stream }));
 
