@@ -1,7 +1,8 @@
 # TODO
 
 - [ ] API
-- [ ] Coverage API jest.config.js
+- [x] Coverage API jest.config.js
+- [ ] Cloudinary
 - [ ] Travis deploy
 - [ ] Cypress
 - [ ] Docker
@@ -11,3 +12,4 @@
 - [ ] Error Boundary
 - [ ] Animations (React Spring?)
 - [ ] Redux Saga
+- [ ] Lambda Test

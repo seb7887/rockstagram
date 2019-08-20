@@ -1,30 +1,17 @@
 language: node_js
 node_js:
-  - "lts/*"
+  - 'lts/*'
+
+services:
+  - postgresql
+
 cache:
   directories:
     - ~/.npm
     - ~/.cache
-notifications:
-  email: false
-install: echo "Installing"
-jobs:
-  include:
-    - stage: test
-      script: npm install && npm run test
-      on:
-        branch: develop
-    - stage: deploy
-      script: npm install && npm build
-      deploy:
-        provider: pages
-        skip-cleanup: true
-        github-token: $GITHUB_API_KEY
-        keep-history: true
-      on:
-        branch: master
-stages:
-  - name: test
-    if: (branch = develop)
-  - name: deploy
-    if: (branch = master)
+
+before_install:
+  - psql -c 'create database rockstagramdev;' -U postgres
+
+script:
+  - npm install && cd server && npm install && cd .. && npm test

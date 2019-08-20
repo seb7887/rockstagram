@@ -1,0 +1,34 @@
+# Server TODO
+
+- [x] DB Connection
+- [x] Error handler
+- [x] Register User (w/ Validation)
+- [x] Auth User
+- [x] Token Expiration
+- [x] Get Profile
+- [x] Update Profile
+- [x] Delete Account
+- [x] Post Photo
+- [x] Get Photos
+- [x] Get Photo
+- [x] Edit Photo (only caption)
+- [x] Delete Photo
+- [x] Validate inputs Photo
+- [x] Followers
+- [x] Posts Feed
+- [x] Users Feed
+- [x] Add Comments
+- [x] Delete Comments
+- [x] Get Comments
+- [ ] Followers/Following
+- [x] Like/Unlike Photo
+- [ ] Add hashtags
+- [ ] Show hashtags
+- [x] Logger
+- [x] Sentry
+- [ ] Recovery Password
+- [ ] Search Users / Hashtags
+- [x] Security
+- [ ] Documentation
+- [x] Traceslash
+- [x] Refactoring Model Methods
